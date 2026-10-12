@@ -105,7 +105,13 @@ footer{margin-top:64px;padding-top:20px;border-top:1px solid var(--line);font-si
 .ay>h3 small{font-family:"IBM Plex Mono",monospace;font-size:12px;color:var(--muted);font-weight:400}
 .ev{border-top:1px solid var(--line)}
 .ev:first-of-type{border-top:0}
-.ev-h{display:grid;grid-template-columns:1fr 34px;align-items:center;padding-right:6px}
+.ev-h{display:grid;grid-template-columns:1fr auto;align-items:center;padding-right:6px}
+/* Editör modu: gizleme araçları yalnızca E ile açılan modda görünür */
+.ev .x,.ed-only{display:none!important}
+.editor-acik .ev .x{display:inline-block!important}
+.editor-acik .ed-only:not([hidden]){display:revert!important}
+.ed-rozet{position:fixed;right:16px;bottom:16px;z-index:20;background:var(--warn);color:var(--surface);font-family:"IBM Plex Mono",monospace;font-size:12px;letter-spacing:.04em;padding:7px 12px;border-radius:999px;box-shadow:0 2px 8px rgba(0,0,0,.15)}
+.ed-rozet kbd{font:inherit;border:1px solid currentColor;border-radius:3px;padding:0 4px;margin:0 2px}
 .ev-h:hover{background:var(--sunken)}
 .ev-t{display:grid;grid-template-columns:62px minmax(0,1fr) auto;gap:8px;align-items:center;padding:8px 6px 8px 14px;cursor:pointer;background:none;border:0;width:100%;text-align:left;font:inherit;color:var(--ink);min-width:0}
 .ev-h .d{font-family:"IBM Plex Mono",monospace;color:var(--muted);white-space:nowrap;font-variant-numeric:tabular-nums;min-width:0;display:flex;flex-direction:column;line-height:1.2}
@@ -161,10 +167,11 @@ html{scroll-behavior:smooth;scroll-padding-top:56px}
     <button class="chip" data-s="TR" aria-pressed="false">Türkiye</button>
     <button class="chip" data-s="GL" aria-pressed="false">Global</button>
     <button class="chip" data-s="W" aria-pressed="false">Wyndham Grand Levent</button>
-    <span class="count"><span id="sayac2"></span> · <button class="lnk" id="gizli-btn" hidden></button></span>
+    <span class="count"><span id="sayac2"></span><span class="ed-only"> · <button class="lnk" id="gizli-btn" hidden></button></span></span>
   </div>
-  <div id="gizli-panel" class="card" hidden></div>
-  <p class="small">Satıra tıklayınca ayrıntı açılır. Sağdaki × işareti etkinliği bu tarayıcıda kalıcı olarak gizler; gizlenenler sağ üstteki bağlantıdan geri alınır.</p>
+  <div id="gizli-panel" class="card ed-only" hidden></div>
+  <p class="small">Satıra tıklayınca ayrıntı açılır.<span class="ed-only"> Editör modu: sağdaki × etkinliği gizler; gizlenenler sağ üstteki bağlantıdan geri alınır.</span></p>
+  <div class="ed-rozet ed-only" role="status">Editör modu açık · kapatmak için <kbd>E</kbd></div>
   <div id="aylar" class="aylar"></div>
 </div>
 
@@ -1738,6 +1745,9 @@ window.GECMIS_TR = [
   "Mobil ticaret için dolaylı ilgi."
  ]
 ];
+
+// Editör modunda "herkes için kaldır" listesine eklenen etkinlikler (etkinlik adıyla). Bu listedekiler sayfayı açan herkes için gizlenir.
+window.KALDIRILAN = [];
 
 </script>
 <script>
@@ -4199,7 +4209,9 @@ window.GECMIS_GL = [
     return best===null?null:new Date(2026, Math.floor(best/100)-1, best%100, 23, 59, 59);
   }
   var SIMDI=new Date();
-  function gelecek(r){ var b=bitis(r[1]); return !b || b>=SIMDI; }
+  /* Editörün "herkes için kaldır" dediği etkinlikler: veri dosyasındaki KALDIRILAN listesi (ada göre) */
+  var KALDIRILAN={}; (window.KALDIRILAN||[]).forEach(function(n){ KALDIRILAN[n]=true; });
+  function gelecek(r){ if(KALDIRILAN[r[0]]) return false; var b=bitis(r[1]); return !b || b>=SIMDI; }
   [window.VERI_TR, window.VERI_GL].forEach(function(d){ if(!d) return; Object.keys(d).forEach(function(k){ d[k]=d[k].filter(gelecek); }); });
   function esc(s){return String(s==null?"":s).replace(/[&<>"]/g,function(c){return{"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c];});}
   function host(u){try{return new URL(u).hostname.replace(/^www\./,"");}catch(e){return u;}}
@@ -4361,8 +4373,26 @@ window.GECMIS_GL = [
   }
   function hiddenIds(){return Object.keys(hidden).filter(function(id){return byId[id];});}
   function renderPanel(){
-    gpanel.innerHTML='<h4>Gizlenen etkinlikler</h4><ul>'+hiddenIds().map(function(id){return '<li>'+esc(byId[id].r[0])+' <button class="lnk" data-undo="'+id+'">geri al</button></li>';}).join("")+'</ul><p class="small" style="margin-top:8px"><button class="lnk" id="undo-all">Hepsini geri al</button> · Gizleme bilgisi yalnızca bu tarayıcıda saklanır.</p>';
+    gpanel.innerHTML='<h4>Gizlenen etkinlikler</h4><ul>'+hiddenIds().map(function(id){return '<li>'+esc(byId[id].r[0])+' <button class="lnk" data-undo="'+id+'">geri al</button></li>';}).join("")+'</ul>'
+      +'<p class="small" style="margin-top:8px"><button class="lnk" id="undo-all">Hepsini geri al</button> · Gizleme yalnızca bu tarayıcıda geçerli.</p>'
+      +'<p class="small"><button class="lnk" id="kopyala">Herkes için kaldırma listesini kopyala</button> · Kopyalanan listeyi Claude\'a gönderin; bu etkinlikler sayfayı açan herkes için kaldırılır.</p>'
+      +'<textarea id="kopya-alani" readonly hidden style="width:100%;min-height:80px;margin-top:6px;font:12px \'IBM Plex Mono\',monospace;background:var(--bg);color:var(--ink);border:1px solid var(--line);border-radius:4px;padding:6px"></textarea>';
   }
+
+  /* ---------- Editör modu (E tuşu) ---------- */
+  function ssGet(k){try{return sessionStorage.getItem(k);}catch(e){return null;}}
+  function ssSet(k,v){try{sessionStorage.setItem(k,v);}catch(e){}}
+  function editorAyarla(acik){
+    document.documentElement.classList.toggle("editor-acik",acik); ssSet("radar.editor",acik?"1":"0");
+    if(!acik) gpanel.hidden=true;
+    apply();
+  }
+  document.addEventListener("keydown",function(e){
+    if(e.ctrlKey||e.metaKey||e.altKey) return;
+    var t=e.target, tag=(t&&t.tagName||"").toLowerCase();
+    if(tag==="input"||tag==="textarea"||tag==="select"||(t&&t.isContentEditable)) return;
+    if(e.key==="e"||e.key==="E"){ e.preventDefault(); editorAyarla(!document.documentElement.classList.contains("editor-acik")); }
+  });
   q2.addEventListener("input",apply);
   function setP(c,v){ c.setAttribute("aria-pressed", v?"true":"false"); }
   chips2.forEach(function(c){c.addEventListener("click",function(){
@@ -4382,9 +4412,18 @@ window.GECMIS_GL = [
   gbtn.addEventListener("click",function(){ if(!gpanel.hidden){gpanel.hidden=true;return;} renderPanel(); gpanel.hidden=false; });
   gpanel.addEventListener("click",function(e){
     var b=e.target.closest("[data-undo]"); if(b){delete hidden[b.dataset.undo]; saveHidden(); apply(); return;}
-    if(e.target.id==="undo-all"){hidden={}; saveHidden(); apply(); gpanel.hidden=true;}
+    if(e.target.id==="undo-all"){hidden={}; saveHidden(); apply(); gpanel.hidden=true; return;}
+    if(e.target.id==="kopyala"){
+      var metin="Herkes için kaldır:\n"+hiddenIds().map(function(id){return "- "+byId[id].r[0];}).join("\n");
+      var alan=document.getElementById("kopya-alani"); alan.value=metin; alan.hidden=false; alan.select();
+      var bitti=function(){ e.target.textContent="Kopyalandı ✓"; };
+      try{ navigator.clipboard.writeText(metin).then(bitti,function(){ try{document.execCommand("copy");bitti();}catch(x){} }); }
+      catch(x){ try{document.execCommand("copy");bitti();}catch(y){} }
+    }
   });
-  apply();
+  /* Gizleme yalnızca editör modunda yapılabilir */
+  cont.addEventListener("click",function(e){ if(e.target.closest(".x") && !document.documentElement.classList.contains("editor-acik")){ e.stopImmediatePropagation(); } },true);
+  editorAyarla(ssGet("radar.editor")==="1");
 })();
 </script>
 
