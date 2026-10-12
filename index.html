@@ -107,8 +107,8 @@ footer{margin-top:64px;padding-top:20px;border-top:1px solid var(--line);font-si
 .ev:first-of-type{border-top:0}
 .ev-h{display:grid;grid-template-columns:1fr 34px;align-items:center;padding-right:6px}
 .ev-h:hover{background:var(--sunken)}
-.ev-t{display:grid;grid-template-columns:58px minmax(0,1fr) auto;gap:8px;align-items:center;padding:8px 6px 8px 14px;cursor:pointer;background:none;border:0;width:100%;text-align:left;font:inherit;color:var(--ink);min-width:0}
-.ev-h .d{font-family:"IBM Plex Mono",monospace;font-size:12.5px;color:var(--muted);white-space:nowrap;font-variant-numeric:tabular-nums}
+.ev-t{display:grid;grid-template-columns:84px minmax(0,1fr) auto;gap:8px;align-items:center;padding:8px 6px 8px 14px;cursor:pointer;background:none;border:0;width:100%;text-align:left;font:inherit;color:var(--ink);min-width:0}
+.ev-h .d{font-family:"IBM Plex Mono",monospace;font-size:12px;color:var(--muted);white-space:nowrap;font-variant-numeric:tabular-nums;overflow:hidden;text-overflow:ellipsis;min-width:0}
 .ev-h .n{font-weight:600;font-size:14.5px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;min-width:0}
 .ev-h .n small{display:block;font-weight:400;font-size:12.5px;color:var(--muted);overflow:hidden;text-overflow:ellipsis}
 .ev-h .m{display:flex;gap:6px;align-items:center}
@@ -117,7 +117,7 @@ footer{margin-top:64px;padding-top:20px;border-top:1px solid var(--line);font-si
 .tg{font-family:"IBM Plex Mono",monospace;font-size:10.5px;letter-spacing:.06em;padding:1px 6px;border-radius:3px;background:var(--sunken);color:var(--muted);border:1px solid var(--line)}
 .ev .x{font:inherit;font-size:16px;line-height:1;border:0;background:none;color:var(--muted);cursor:pointer;padding:4px 6px;border-radius:4px;opacity:.55}
 .ev .x:hover{opacity:1;background:var(--warn-soft);color:var(--warn)}
-.ev-d{padding:4px 14px 14px 80px;font-size:13.5px;display:grid;gap:4px;border-top:1px dashed var(--line)}
+.ev-d{padding:4px 14px 14px 106px;font-size:13.5px;display:grid;gap:4px;border-top:1px dashed var(--line)}
 .ev-d dl{margin:0;display:grid;grid-template-columns:110px 1fr;gap:3px 12px}
 .ev-d dt{color:var(--muted);font-family:"IBM Plex Mono",monospace;font-size:11.5px;text-transform:uppercase;letter-spacing:.05em;padding-top:2px}
 .ev-d dd{margin:0}
@@ -125,7 +125,7 @@ footer{margin-top:64px;padding-top:20px;border-top:1px solid var(--line);font-si
 .ev.hid{display:none}
 #gizli-panel ul{margin:6px 0 0;padding-left:0;list-style:none;display:flex;flex-wrap:wrap;gap:6px}
 #gizli-panel li{font-size:13px;background:var(--sunken);border:1px solid var(--line);border-radius:999px;padding:3px 10px}
-@media (max-width:640px){.ev-t{grid-template-columns:50px minmax(0,1fr)}.ev-h .m{display:none}.ev-d{padding-left:14px}.ev-d dl{grid-template-columns:1fr}}
+@media (max-width:640px){.ev-t{grid-template-columns:74px minmax(0,1fr)}.ev-h .m{display:none}.ev-d{padding-left:14px}.ev-d dl{grid-template-columns:1fr}}
 @media (prefers-reduced-motion: reduce){*{scroll-behavior:auto!important}}
 html{scroll-behavior:smooth;scroll-padding-top:56px}
 </style>
@@ -157,7 +157,6 @@ html{scroll-behavior:smooth;scroll-padding-top:56px}
     <input id="ara2" type="search" placeholder="ara: ad, şehir, konu…" autocomplete="off" aria-label="Aylık listede ara">
     <button class="chip" data-s="TR" aria-pressed="true">Türkiye</button>
     <button class="chip" data-s="GL" aria-pressed="true">Global</button>
-    <button class="chip" data-s="R" aria-pressed="true">yalnızca resmî</button>
     <button class="chip" data-s="W" aria-pressed="false">Wyndham Grand Levent</button>
     <span class="count"><span id="sayac2"></span> · <button class="lnk" id="gizli-btn" hidden></button></span>
   </div>
@@ -1674,7 +1673,7 @@ window.GECMIS_TR = [
 
 </script>
 <script>
-// Yurt dışı / Global — Eylül–Aralık 2026 (güncelleme: 11 Ekim 2026)
+// Yurt dışı / Global — Eylül–Aralık 2026 (güncelleme: 12 Ekim 2026)
 window.VERI_GL = {
  "E-ticaret ve perakende": [
   [
@@ -2418,8 +2417,8 @@ window.VERI_GL = {
    "ExCeL London",
    "Perakende tedarik zinciri, lojistik, ambalaj",
    "Perakende ve e-ticaret operasyon",
-   "White Label World Expo ile tek bilet",
-   "https://www.whitelabelexpo.co.uk/",
+   "200+ katılımcı firma; tek ücretsiz biletle aynı yerdeki dört fuara giriş (White Label, Smart Retail Tech, E-commerce Packaging)",
+   "https://www.retailscl.com/",
    "Ücretsiz",
    "R",
    ""
@@ -2449,6 +2448,227 @@ window.VERI_GL = {
    "Bilgi yok",
    "R",
    ""
+  ],
+  [
+   "The ARC — Automation & Robotics Conference (4.)",
+   "15 Ekim 2026",
+   "Oslo / Norveç",
+   "Oslo Event Hub",
+   "Depo otomasyonu, robotik, AutoStore benzeri sistemler, otomasyon yatırımı",
+   "İskandinav perakende ve e-ticaret operasyon yöneticileri",
+   "Organizatör NovaRetail; Element Logic, Exotec, SSI Schäfer sponsor",
+   "https://arc.no/",
+   "Belirtilmedi",
+   "U",
+   ""
+  ],
+  [
+   "PACK EXPO International 2026",
+   "18–21 Ekim 2026",
+   "Chicago / ABD",
+   "McCormick Place",
+   "Ambalaj ve proses otomasyonu, e-ticaret ambalajı, robotik, son hat otomasyonu",
+   "Ambalaj, operasyon ve mühendislik yöneticileri",
+   "Organizatör PMMI; yalnızca ticari ziyaretçi",
+   "https://www.packexpointernational.com/",
+   "Ücret doğrulanamadı; online kayıt",
+   "U",
+   "Resmî site 403 verdi; JETRO ile doğrulandı."
+  ],
+  [
+   "BVL Supply Chain CX 2026 (eski Deutscher Logistik-Kongress)",
+   "21–22 Ekim 2026",
+   "Berlin / Almanya",
+   "Estrel Berlin",
+   "Tedarik zinciri stratejisi, yapay zekâ, otomasyon, perakende lojistiği",
+   "Avrupa'daki üst düzey tedarik zinciri ve lojistik yöneticileri",
+   "Organizatör BVL; 5 sahne, 60+ oturum, 120+ konuşmacı",
+   "https://www.bvl.de/",
+   "Belirtilmedi",
+   "U",
+   ""
+  ],
+  [
+   "NextGen Supply Chain Conference 2026",
+   "21–23 Ekim 2026",
+   "Nashville / ABD",
+   "W Nashville",
+   "\"Innovate. Upskill. Transform.\": yapay zekâ, uygulama, yetenek, perakende ve lojistik",
+   "Tedarik zinciri yöneticileri",
+   "Organizatör SCMR / Peerless Media; 30 breakout, NextGen ödülleri",
+   "https://www.nextgensupplychainconference.com/",
+   "Standart fiyat sitede (erken kayıt bitti)",
+   "U",
+   ""
+  ],
+  [
+   "Last Mile Delivery (LMD) Conference & Expo 2026",
+   "22–23 Ekim 2026",
+   "Las Vegas / ABD",
+   "Horseshoe Las Vegas",
+   "Son mil, aynı gün teslimat, elektrikli filolar, otonom teslimat, 3PL ve taşıyıcı yönetimi, yapay zekâ",
+   "Marka, perakende ve restoran zincirlerinin teslimat ve fulfilment yöneticileri",
+   "400+ yönetici; Walmart, Target, DoorDash, Kroger, P&G, Williams Sonoma",
+   "https://lmdconference.com/",
+   "Marka ve perakendecilere 1.250 $; grup kişi başı 833–938 $",
+   "R",
+   "E-ticaret son mil için en odaklı etkinlik."
+  ],
+  [
+   "Kinaxis Kinexions EMEA 2026",
+   "26–28 Ekim 2026",
+   "Barselona / İspanya",
+   "Grand Hyatt Barcelona",
+   "Tedarik zinciri planlama, ajan tabanlı yapay zekâ, operasyonel orkestrasyon",
+   "Planlama ve S&OP yöneticileri",
+   "Bosch, Castrol, Coca-Cola Al Ahlia, Moët Hennessy",
+   "https://www.kinaxis.com/",
+   "Belirtilmedi; kayıt açık",
+   "R",
+   ""
+  ],
+  [
+   "Gartner Supply Chain Planning Summit 2026",
+   "2–3 Kasım 2026",
+   "Denver (Aurora) / ABD",
+   "Gaylord Rockies Resort & Convention Center",
+   "Talep, arz ve stok planlama, S&OP/IBP, planlamada yapay zekâ",
+   "Planlama liderleri",
+   "50+ oturum; konuk keynote Josh Linkner",
+   "https://www.gartner.com/en/conferences/na/supply-chain-planning-us",
+   "Standart 4.175 $",
+   "R",
+   ""
+  ],
+  [
+   "CeMAT Asia 2026",
+   "3–6 Kasım 2026",
+   "Şanghay / Çin",
+   "Shanghai New International Expo Centre",
+   "İç lojistik, AS/RS, AMR/AGV, sortation, forklift, depo yazılımı",
+   "Asya'daki depo, dağıtım ve e-ticaret operasyonları",
+   "Organizatör Hannover Milano Fairs Shanghai",
+   "https://www.cemat-asia.com/",
+   "Online ziyaretçi kaydı",
+   "R",
+   "Asya'nın en büyük intralojistik fuarı."
+  ],
+  [
+   "Logistik & Transport 2026",
+   "3–4 Kasım 2026",
+   "Göteborg / İsveç",
+   "Svenska Mässan",
+   "Lojistik ve taşıma çözümleri, depo otomasyonu",
+   "İskandinav lojistik ve perakende yöneticileri",
+   "135+ katılımcı firma, 5.000+ ziyaretçi; konferans dili ağırlıkla İsveççe",
+   "https://en.logistik.to/",
+   "Ücretsiz",
+   "U",
+   ""
+  ],
+  [
+   "FLOW — Future of Logistics, Operations & World Trade 2026 (ilk edisyon)",
+   "4–5 Kasım 2026",
+   "Dubai / BAE",
+   "Dubai Exhibition Centre, Expo City",
+   "Dayanıklı tedarik zinciri, yapay zekâ destekli otomasyon, veri",
+   "Körfez lojistik, ticaret ve tedarik zinciri yöneticileri",
+   "Organizatör ve resmî site bulunamadı",
+   "https://aircargoweek.com/events/flow-future-of-logistics-operation-and-world-trade-2026/",
+   "Bilinmiyor",
+   "D",
+   ""
+  ],
+  [
+   "Logistics & Automation Madrid + Empack Madrid",
+   "11–12 Kasım 2026",
+   "Madrid / İspanya",
+   "IFEMA Madrid",
+   "Depo otomasyonu, WMS, intralojistik, ambalaj, e-ticaret fulfilment",
+   "İber lojistik, perakende ve e-ticaret yöneticileri",
+   "Organizatör Easyfairs",
+   "https://www.logisticsautomationmadrid.com/",
+   "Genelde ücretsiz profesyonel kayıt (doğrulanmadı)",
+   "U",
+   ""
+  ],
+  [
+   "ALMAC 2026 — Asian Logistics, Maritime & Aviation Conference",
+   "16–17 Kasım 2026",
+   "Hong Kong",
+   "HKCEC",
+   "Küresel ticaret ve tedarik zinciri trendleri, teknoloji, hava kargo, sürdürülebilirlik",
+   "Asya lojistik ve ticaret yöneticileri",
+   "Organizatör HKTDC; 2025'te 2.300+ katılımcı",
+   "https://www.almac.hk/",
+   "Belirtilmedi",
+   "U",
+   ""
+  ],
+  [
+   "ALLFORPACK Emballage Paris 2026",
+   "24–26 Kasım 2026",
+   "Paris / Fransa",
+   "Paris Nord Villepinte",
+   "Ambalaj, ambalaj otomasyonu, intralojistik, e-ticaret ambalajı",
+   "Ambalaj ve lojistik yöneticileri",
+   "Organizatör Comexposium; yalnızca profesyoneller",
+   "https://www.all-for-pack.com/",
+   "Belirtilmedi",
+   "R",
+   ""
+  ],
+  [
+   "Global Logistics Forum 2026 (2.) + UNCTAD Global Supply Chain Forum",
+   "29 Kasım – 1 Aralık 2026",
+   "Riyad / Suudi Arabistan",
+   "King Abdulaziz International Conference Center",
+   "Lojistik inovasyonu, küresel bağlantısallık, tedarik zinciri sürdürülebilirliği",
+   "Politika yapıcılar, yatırımcılar, lojistik yöneticileri",
+   "Ev sahibi Suudi Ulaştırma ve Lojistik Bakanlığı; 2024'te 13.000+ katılımcı",
+   "https://www.glforum.org/en",
+   "Bilinmiyor",
+   "U",
+   ""
+  ],
+  [
+   "Supply Chain Event 2026",
+   "1–2 Aralık 2026",
+   "Paris / Fransa",
+   "Paris Expo Porte de Versailles",
+   "Dijitalleşme, yapay zekâ, otomasyon, robotik, planlama, taşıma, risk",
+   "Fransız tedarik zinciri ve lojistik yöneticileri",
+   "Organizatör RX; 100–130 katılımcı firma, 40+ konferans",
+   "https://www.supplychain-event.com/",
+   "Belirtilmedi",
+   "U",
+   ""
+  ],
+  [
+   "Supply Chain & Logistics Summit 2026 (Dallas)",
+   "5–6 Kasım 2026",
+   "Dallas / ABD",
+   "The Ritz-Carlton Dallas, Las Colinas",
+   "Yapay zekâ, otomasyon, görünürlük, jeopolitik risk",
+   "CSCO ve tedarik zinciri VP'leri; davetli",
+   "P&G, Oracle, HP, L3Harris",
+   "https://supplychaindigital.com/events/supply-chain-logistics-summit-2026",
+   "Davetli",
+   "U",
+   "Organizatör kaynaklara göre çelişkili."
+  ],
+  [
+   "Cold Chain Connection Southeast (GCCA)",
+   "3–4 Kasım 2026",
+   "Atlanta / ABD",
+   "Bilgi yok",
+   "Soğuk zincir lojistiği",
+   "Soğuk zincir operatörleri",
+   "GCCA",
+   "https://www.gcca.org/events/",
+   "Bilgi yok",
+   "R",
+   "Kısmen ilgili."
   ]
  ],
  "Yapay zekâ, veri ve otomasyon": [
@@ -3204,6 +3424,13 @@ window.TAKIP_GL = [
   "2026 (şehir/tarih yok)",
   "Qualtrics \"2026 boyunca 28 şehir\" diyor; tarih listesi yok.",
   "https://www.qualtrics.com/events/"
+ ],
+ [
+  "Lojistik 2027 ileri takvim",
+  "—",
+  "—",
+  "DELIVER Middle East 20–21 Ocak 2027 (Dubai) · Manifest 8–10 Şubat 2027 (Las Vegas) · LogiMAT 16–18 Mart 2027 (Stuttgart, 25. yıl) · ProMat 19–21 Nisan 2027 (Chicago) · Blue Yonder ICON 17–20 Mayıs 2027 · Empack Mechelen 27–28 Ekim 2027.",
+  "https://www.logimat-messe.de/"
  ]
 ];
 
@@ -4023,10 +4250,9 @@ window.GECMIS_GL = [
     var q=(q2.value||"").toLocaleLowerCase("tr"), on={};
     chips2.forEach(function(c){on[c.dataset.s]=c.getAttribute("aria-pressed")==="true";});
     var shown=0;
-    var onlyOfficial=on.R===true;
     [].slice.call(cont.querySelectorAll(".ev")).forEach(function(ev){
       var it=byId[ev.dataset.id];
-      var ok=!hidden[it.id] && on[it.src]===true && (!onlyOfficial || it.r[9]==="R") && (on.W!==true || /wyndham.*levent/i.test(it.r[3]));
+      var ok=!hidden[it.id] && on[it.src]===true && (on.W!==true || /wyndham.*levent/i.test(it.r[3]));
       if(ok && q) ok=(it.r[0]+" "+it.r[2]+" "+it.r[3]+" "+it.r[4]+" "+it.topic).toLocaleLowerCase("tr").indexOf(q)>-1;
       ev.classList.toggle("hid",!ok); if(ok) shown++;
     });
@@ -4042,8 +4268,6 @@ window.GECMIS_GL = [
   function renderPanel(){
     gpanel.innerHTML='<h4>Gizlenen etkinlikler</h4><ul>'+hiddenIds().map(function(id){return '<li>'+esc(byId[id].r[0])+' <button class="lnk" data-undo="'+id+'">geri al</button></li>';}).join("")+'</ul><p class="small" style="margin-top:8px"><button class="lnk" id="undo-all">Hepsini geri al</button> · Gizleme bilgisi yalnızca bu tarayıcıda saklanır.</p>';
   }
-  /* "yalnızca resmî" varsayılan kapalı: tüm güven seviyeleri görünür */
-  chips2.forEach(function(c){ if(c.dataset.s==="R") c.setAttribute("aria-pressed","false"); });
   q2.addEventListener("input",apply);
   chips2.forEach(function(c){c.addEventListener("click",function(){c.setAttribute("aria-pressed",c.getAttribute("aria-pressed")==="true"?"false":"true");apply();});});
   gbtn.addEventListener("click",function(){ if(!gpanel.hidden){gpanel.hidden=true;return;} renderPanel(); gpanel.hidden=false; });
