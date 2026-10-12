@@ -157,8 +157,9 @@ html{scroll-behavior:smooth;scroll-padding-top:56px}
 <div id="view-aylik" class="wrap">
   <div class="tools">
     <input id="ara2" type="search" placeholder="ara: ad, şehir, konu…" autocomplete="off" aria-label="Aylık listede ara">
-    <button class="chip" data-s="TR" aria-pressed="true">Türkiye</button>
-    <button class="chip" data-s="GL" aria-pressed="true">Global</button>
+    <button class="chip" data-s="ALL" aria-pressed="true">Tümü</button>
+    <button class="chip" data-s="TR" aria-pressed="false">Türkiye</button>
+    <button class="chip" data-s="GL" aria-pressed="false">Global</button>
     <button class="chip" data-s="W" aria-pressed="false">Wyndham Grand Levent</button>
     <span class="count"><span id="sayac2"></span> · <button class="lnk" id="gizli-btn" hidden></button></span>
   </div>
@@ -4344,7 +4345,9 @@ window.GECMIS_GL = [
     var shown=0;
     [].slice.call(cont.querySelectorAll(".ev")).forEach(function(ev){
       var it=byId[ev.dataset.id];
-      var ok=!hidden[it.id] && on[it.src]===true && (on.W!==true || /wyndham.*levent/i.test(it.r[3]));
+      /* Tümü: her şey. Aksi hâlde seçilen filtrelerden herhangi birine uyan (birleşim). */
+      var isW=/wyndham.*levent/i.test(it.r[3]);
+      var ok=!hidden[it.id] && (on.ALL || (on.TR && it.src==="TR") || (on.GL && it.src==="GL") || (on.W && isW));
       if(ok && q) ok=(it.r[0]+" "+it.r[2]+" "+it.r[3]+" "+it.r[4]+" "+it.topic).toLocaleLowerCase("tr").indexOf(q)>-1;
       ev.classList.toggle("hid",!ok); if(ok) shown++;
     });
@@ -4361,7 +4364,21 @@ window.GECMIS_GL = [
     gpanel.innerHTML='<h4>Gizlenen etkinlikler</h4><ul>'+hiddenIds().map(function(id){return '<li>'+esc(byId[id].r[0])+' <button class="lnk" data-undo="'+id+'">geri al</button></li>';}).join("")+'</ul><p class="small" style="margin-top:8px"><button class="lnk" id="undo-all">Hepsini geri al</button> · Gizleme bilgisi yalnızca bu tarayıcıda saklanır.</p>';
   }
   q2.addEventListener("input",apply);
-  chips2.forEach(function(c){c.addEventListener("click",function(){c.setAttribute("aria-pressed",c.getAttribute("aria-pressed")==="true"?"false":"true");apply();});});
+  function setP(c,v){ c.setAttribute("aria-pressed", v?"true":"false"); }
+  chips2.forEach(function(c){c.addEventListener("click",function(){
+    var tumu=chips2.filter(function(x){return x.dataset.s==="ALL";})[0];
+    var diger=chips2.filter(function(x){return x.dataset.s!=="ALL";});
+    if(c===tumu){
+      setP(tumu,true); diger.forEach(function(x){setP(x,false);});
+    } else {
+      setP(c, c.getAttribute("aria-pressed")!=="true");
+      var secili=diger.filter(function(x){return x.getAttribute("aria-pressed")==="true";}).length;
+      /* Üçü birden seçiliyse ya da hiçbiri seçili değilse Tümü'ye dön */
+      if(secili===diger.length || secili===0){ setP(tumu,true); diger.forEach(function(x){setP(x,false);}); }
+      else setP(tumu,false);
+    }
+    apply();
+  });});
   gbtn.addEventListener("click",function(){ if(!gpanel.hidden){gpanel.hidden=true;return;} renderPanel(); gpanel.hidden=false; });
   gpanel.addEventListener("click",function(e){
     var b=e.target.closest("[data-undo]"); if(b){delete hidden[b.dataset.undo]; saveHidden(); apply(); return;}
