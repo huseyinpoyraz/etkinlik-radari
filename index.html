@@ -4117,6 +4117,22 @@ window.GECMIS_GL = [
 <script>
 (function(){
   var G={R:"resmî kaynak",U:"güvenilir üçüncü taraf",D:"doğrulama gerekli"};
+
+  /* Bitiş tarihi bugünden önce olan etkinlikleri ana listelerden çıkar.
+     Tarih metnindeki en geç gün esas alınır ("29 Eylül – 1 Ekim", çok şehirli turlar dahil);
+     tarihi okunamayan veya yalnızca ay bilgisi olan kayıtlar ay sonuna kadar görünür. */
+  var AY={"Eylül":9,"Ekim":10,"Kasım":11,"Aralık":12,"Eyl":9,"Eki":10,"Kas":11,"Ara":12};
+  function bitis(s){
+    s=String(s||""); var best=null, m, re=/(\d{1,2})(?:\s*[–-]\s*(\d{1,2}))?\s*(Eylül|Ekim|Kasım|Aralık)/g;
+    while((m=re.exec(s))){ var v=AY[m[3]]*100+ +(m[2]||m[1]); if(best===null||v>best) best=v; }
+    var re2=/(\d{1,2})\s*(Eylül|Ekim|Kasım|Aralık)\s*[–-]\s*(\d{1,2})\s*(Eylül|Ekim|Kasım|Aralık)/g;
+    while((m=re2.exec(s))){ var v2=AY[m[4]]*100+ +m[3]; if(v2>best) best=v2; }
+    if(best===null){ var a=/(Eylül|Ekim|Kasım|Aralık)/.exec(s); if(a) best=AY[a[1]]*100+31; }
+    return best===null?null:new Date(2026, Math.floor(best/100)-1, best%100, 23, 59, 59);
+  }
+  var SIMDI=new Date();
+  function gelecek(r){ var b=bitis(r[1]); return !b || b>=SIMDI; }
+  [window.VERI_TR, window.VERI_GL].forEach(function(d){ if(!d) return; Object.keys(d).forEach(function(k){ d[k]=d[k].filter(gelecek); }); });
   function esc(s){return String(s==null?"":s).replace(/[&<>"]/g,function(c){return{"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c];});}
   function host(u){try{return new URL(u).hostname.replace(/^www\./,"");}catch(e){return u;}}
   function linkCell(u){ if(!u||u==="—") return "—"; return '<a href="'+esc(u)+'" target="_blank" rel="noopener">'+esc(host(u))+'</a>'; }
