@@ -93,6 +93,12 @@ ol.top10 span.when{display:block;font-family:"IBM Plex Mono",monospace;font-size
 .cal li.k b{color:var(--accent)}
 footer{margin-top:64px;padding-top:20px;border-top:1px solid var(--line);font-size:13px;color:var(--muted)}
 @media (max-width:640px){ol.top10 li{grid-template-columns:34px 1fr}.cal li{grid-template-columns:1fr}}
+/* dönem seçici */
+.donem{display:inline-flex;flex-wrap:wrap;gap:0;margin-top:18px;border:1px solid var(--line);border-radius:8px;overflow:hidden;background:var(--surface)}
+.dbtn{font:inherit;font-family:Manrope,sans-serif;font-weight:700;font-size:14px;padding:9px 16px;border:0;border-right:1px solid var(--line);background:none;color:var(--muted);cursor:pointer}
+.dbtn:last-child{border-right:0}
+.dbtn[aria-pressed="true"]{background:var(--accent);color:var(--accent-ink)}
+.dbtn span{font-family:"IBM Plex Mono",monospace;font-weight:400;font-size:12px;opacity:.8;margin-left:4px}
 /* görünüm anahtarı */
 .switch{display:flex;gap:6px;margin-top:22px;border-bottom:1px solid var(--line)}
 .tab{font:inherit;font-family:Manrope,sans-serif;font-weight:700;font-size:15px;padding:10px 16px;border:0;border-bottom:3px solid transparent;background:none;color:var(--muted);cursor:pointer;margin-bottom:-1px}
@@ -140,12 +146,12 @@ html{scroll-behavior:smooth;scroll-padding-top:56px}
 
 <header class="top">
   <div class="eyebrow">E-ticaret · Perakende · Pazarlama · Fintech · Lojistik · Yapay zekâ · Teknoloji</div>
-  <h1>Etkinlik Radarı, Eylül–Aralık 2026</h1>
+  <h1>Etkinlik Radarı, Ekim 2026 – Mart 2027</h1>
   <p>Türkiye ve küresel pazarlarda e-ticaret direktörü perspektifiyle taranan konferans, zirve ve fuarların doğrulanmış listesi. Her satırın kaynağı ve güven seviyesi işaretlidir; belirsiz veya çelişkili bilgiler açıkça not edilmiştir.</p>
   <div class="meta">
-    <div>Doğrulama tarihi <b>11 Ekim 2026</b> (önceki turlar 15 Eylül, 27 Eylül, 7–8 Ekim)</div>
-    <div>Kapsam <b>11 Ekim – 31 Aralık 2026 · Türkiye (İstanbul, Ankara, Bursa, İzmir öncelikli) + Global</b></div>
-    <div>Tarama <b>iki tur, ~300 web araması, ~700 sayfa açılışı</b></div>
+    <div>Doğrulama tarihi <b>12 Ekim 2026</b> (önceki turlar 15 ve 27 Eylül, 7–11 Ekim)</div>
+    <div>Kapsam <b>Ekim 2026 – Mart 2027 · Türkiye (İstanbul, Ankara, Bursa, İzmir öncelikli) + Global</b></div>
+    <div>Tarama <b>beş tur, ~600 web araması, ~1.200 sayfa açılışı</b></div>
     <div>Ana listede <b id="toplam">—</b> etkinlik, takip listelerinde <b id="toplamTakip">—</b> kayıt, <b id="toplamGecmis">—</b> etkinlik 15 Eylül – 11 Ekim arasında tamamlandı</div>
   </div>
   <div class="legend">
@@ -161,6 +167,11 @@ html{scroll-behavior:smooth;scroll-padding-top:56px}
 </div>
 
 <div id="view-aylik" class="wrap">
+  <div class="donem" role="group" aria-label="Dönem">
+    <button class="dbtn" data-p="Q4" aria-pressed="false">Ekim–Aralık 2026 <span data-dc="Q4"></span></button>
+    <button class="dbtn" data-p="Q1" aria-pressed="false">Ocak–Mart 2027 <span data-dc="Q1"></span></button>
+    <button class="dbtn" data-p="ALL" aria-pressed="false">Tüm dönem <span data-dc="ALL"></span></button>
+  </div>
   <div class="tools">
     <input id="ara2" type="search" placeholder="ara: ad, şehir, konu…" autocomplete="off" aria-label="Aylık listede ara">
     <button class="chip" data-s="ALL" aria-pressed="true">Tümü</button>
@@ -315,14 +326,14 @@ html{scroll-behavior:smooth;scroll-padding-top:56px}
   <div class="tblwrap"><table>
     <thead><tr><th>Etkinlik</th><th>Tarih</th><th>Salon</th><th>Organizasyon şirketi</th><th>Konu</th><th>Resmî kaynak</th><th>Bilet / kayıt</th><th>Doğrulama</th><th>Güven</th></tr></thead>
     <tbody>
-      <tr><td class="name">13. Perakende Teknolojileri Konferansı</td><td class="date">6 Ekim 2026</td><td>Belirtilmedi (önceki yıllar Piri Reis)</td><td>Zincir Mağazalar Derneği (ZMD)</td><td>Perakende teknolojileri, perakende–BT tedarikçi buluşması, Perakende Teknolojileri Ödülleri</td><td class="url"><a href="https://www.zincirmagazalar.org/?page_id=4350">zincirmagazalar.org</a></td><td>esayrac@zincirmagazalar.org</td><td class="date">15 Eyl 2026</td><td><span class="badge b-R">resmî kaynak</span></td></tr>
-      <tr><td class="name">IDC Security Summit Türkiye 2026</td><td class="date">13 Ekim 2026</td><td>Belirtilmedi</td><td>IDC Türkiye</td><td>Dayanıklılık, yapay zekâ destekli savunma, fraud ve deepfake savunması, kimlik direnci</td><td class="url"><a href="https://event.idc.com/event/security-summit-turkiye/">event.idc.com</a></td><td>Bilgi yok</td><td class="date">15 Eyl 2026</td><td><span class="badge b-R">resmî kaynak</span></td></tr>
+      <tr><td class="name">13. Perakende Teknolojileri Konferansı</td><td class="date">6 Ekim 2026</td><td>Belirtilmedi (önceki yıllar Piri Reis)</td><td>Zincir Mağazalar Derneği (ZMD)</td><td>Perakende teknolojileri, perakende–BT tedarikçi buluşması, Perakende Teknolojileri Ödülleri</td><td class="url"><a href="https://www.zincirmagazalar.org/?page_id=4350">zincirmagazalar.org</a></td><td>esayrac@zincirmagazalar.org</td><td class="date">12 Eki 2026</td><td><span class="badge b-R">resmî kaynak</span></td></tr>
+      <tr><td class="name">IDC Security Summit Türkiye 2026</td><td class="date">13 Ekim 2026</td><td>Belirtilmedi</td><td>IDC Türkiye</td><td>Dayanıklılık, yapay zekâ destekli savunma, fraud ve deepfake savunması, kimlik direnci</td><td class="url"><a href="https://event.idc.com/event/security-summit-turkiye/">event.idc.com</a></td><td>Bilgi yok</td><td class="date">12 Eki 2026</td><td><span class="badge b-R">resmî kaynak</span></td></tr>
       <tr><td class="name">Bilişim Zirvesi'26 — "Yapay Dünya'nın Dopamini"</td><td class="date">15 Ekim 2026</td><td>Belirtilmedi</td><td>Interpromedya / BThaber</td><td>Dijital dönüşüm, yapay zekâ, bulut, AI destekli siber güvenlik, AI ile müşteri deneyimi; C-level paneller</td><td class="url"><a href="https://www.bilisimzirvesi.com.tr/etkinlikler/etkinlik/bilisim-zirvesi26">bilisimzirvesi.com.tr</a></td><td>Kayıt formu; fiyat yok</td><td class="date">27 Eyl 2026</td><td><span class="badge b-R">resmî kaynak</span></td></tr>
-      <tr><td class="name">Webrazzi Summit 2026 (20. yıl)</td><td class="date">21 Ekim 2026</td><td>Çoklu paralel salon + Startup Lounge + Webrazzi Arena</td><td>Webrazzi</td><td>Yapay zekâ, fintech, büyüme, girişimcilik, yatırım ekosistemi</td><td class="url"><a href="https://webrazzi.com/etkinlik/2026/summit">webrazzi.com</a></td><td><a href="https://webrazzi.com/order/ticket/summit-2026/">Biletler satışta</a></td><td class="date">15 Eyl 2026</td><td><span class="badge b-R">resmî kaynak</span></td></tr>
+      <tr><td class="name">Webrazzi Summit 2026 (20. yıl)</td><td class="date">21 Ekim 2026</td><td>Çoklu paralel salon + Startup Lounge + Webrazzi Arena</td><td>Webrazzi</td><td>Yapay zekâ, fintech, büyüme, girişimcilik, yatırım ekosistemi</td><td class="url"><a href="https://webrazzi.com/etkinlik/2026/summit">webrazzi.com</a></td><td><a href="https://webrazzi.com/order/ticket/summit-2026/">Biletler satışta</a></td><td class="date">12 Eki 2026</td><td><span class="badge b-R">resmî kaynak</span></td></tr>
       <tr><td class="name">Türkiye Yapay Zekâ Zirvesi 2026 — "Ajanlar Aramızda"</td><td class="date">11 Kas (fizikî) + 12 Kas (online)</td><td>Belirtilmedi</td><td>Kriko / TRAI</td><td>Kurumsal üretken yapay zekâ, ajan tabanlı yapay zekâ, dikey uygulamalar; 1.500+ katılımcı</td><td class="url"><a href="https://zirve.turkiye.ai/">zirve.turkiye.ai</a> · <a href="https://kriko.io/tr/etkinlikler/turkiye-yapay-zeka-zirvesi">kriko.io</a></td><td>Standart 30.000 TL (1 Kas'a kadar), son şans 36.000 TL; online gün ücretsiz</td><td class="date">27 Eyl 2026</td><td><span class="badge b-R">resmî kaynak</span></td></tr>
       <tr><td class="name">12. Ortak Gelişim Kongresi</td><td class="date">17 Kasım 2026</td><td>Belirtilmedi</td><td>Gıda Perakendecileri Derneği (GPD)</td><td>Gıda perakendesi–tedarikçi ortak gelişim</td><td class="url"><a href="https://www.gidaperakendecileri.org/kongre-2026/">gidaperakendecileri.org</a></td><td>GPD ile iletişim</td><td class="date">27 Eyl 2026</td><td><span class="badge b-R">resmî kaynak</span></td></tr>
-      <tr><td class="name">Webrazzi Fintech 2026</td><td class="date">9 Aralık 2026</td><td>Belirtilmedi</td><td>Webrazzi</td><td>Yapay zekâ ve finans, ödeme sistemlerinin geleceği, açık finans; atölyeler</td><td class="url"><a href="https://webrazzi.com/etkinlik/2026/fintech">webrazzi.com</a></td><td>42.000 TL+KDV bireysel / 37.500 TL+KDV grup</td><td class="date">15 Eyl 2026</td><td><span class="badge b-R">resmî kaynak</span></td></tr>
-      <tr><td class="name">IDC Directions Türkiye 2026</td><td class="date">Tarih sayfada yok (27 Eyl kontrolü); yarım gün 09:00–12:00</td><td>Belirtilmedi</td><td>IDC Türkiye</td><td>2027 pazar öngörüleri; "Agent Economy", Türkiye'de agentic AI evrimi</td><td class="url"><a href="https://event.idc.com/event/idc-directions-turkiye/">event.idc.com</a></td><td>Kayıt açık</td><td class="date">15 Eyl 2026</td><td><span class="badge b-D">tarih için doğrulama gerekli</span></td></tr>
+      <tr><td class="name">Webrazzi Fintech 2026</td><td class="date">9 Aralık 2026</td><td>Belirtilmedi</td><td>Webrazzi</td><td>Yapay zekâ ve finans, ödeme sistemlerinin geleceği, açık finans; atölyeler</td><td class="url"><a href="https://webrazzi.com/etkinlik/2026/fintech">webrazzi.com</a></td><td>42.000 TL+KDV bireysel / 37.500 TL+KDV grup</td><td class="date">12 Eki 2026</td><td><span class="badge b-R">resmî kaynak</span></td></tr>
+      <tr><td class="name">DevFest Istanbul 2026 (GDG Istanbul)</td><td class="date">19 Aralık 2026</td><td>Belirtilmedi</td><td>GDG Istanbul</td><td>AI, Cloud, Web, Mobile, Backend; 4 track, geçen yıl 2.500+ katılımcı</td><td class="url"><a href="https://devfest.istanbul/">devfest.istanbul</a></td><td>Kayıt yakında açılacak</td><td class="date">12 Eki 2026</td><td><span class="badge b-R">resmî kaynak</span></td></tr>
     </tbody>
   </table></div>
   <p class="small">Geçmiş bağlam (2026 listesine alınmadı): TechFinTech 2026 bu otelde 15 Nisan 2026'da yapıldı; 11. Perakende Teknolojileri Konferansı 3 Ekim 2024'te 500+ katılımcıyla burada gerçekleşti.</p>
@@ -473,7 +484,7 @@ html{scroll-behavior:smooth;scroll-padding-top:56px}
 </div>
 
 <script>
-// Türkiye — Eylül–Aralık 2026 (güncelleme: 12 Ekim 2026)
+// Türkiye — Ekim 2026 – Mart 2027 (güncelleme: 12 Ekim 2026)
 window.VERI_TR = {
  "E-ticaret ve perakende": [
   [
@@ -555,16 +566,16 @@ window.VERI_TR = {
    "7. edisyon. \"9 Aralık\" tarihi 2025 edisyonuna aitti; resmî site ve Kriko 22 Aralık'ı doğruluyor."
   ],
   [
-   "Private Label Zirvesi",
-   "Aralık 2026 (gün açıklanmadı)",
+   "11. Private Label Zirvesi (PLAT)",
+   "9 Aralık 2026",
    "İstanbul / Türkiye",
-   "Crowne Plaza Istanbul – Asia",
+   "Crowne Plaza Istanbul Asia, Pendik",
    "Özel markalı ürünler, perakende tedarik",
    "Perakende satın alma ve kategori yöneticileri",
    "Bilgi yok",
-   "https://perakende.org/etkinlik-takvimi/",
+   "https://privatelabelzirvesi.com/",
    "Bilgi yok",
-   "D",
+   "R",
    ""
   ],
   [
@@ -592,6 +603,32 @@ window.VERI_TR = {
    "Ziyaretçi pası 490 USD (indirimli); konaklama paketi 690 USD'den; son başvuru 30 Eylül 2026",
    "R",
    "Öncelik şehri değil ama kapsam açısından önemli."
+  ],
+  [
+   "Franchise İstanbul Expo 2027",
+   "18–21 Mart 2027",
+   "İstanbul / Türkiye",
+   "Tüyap Fuar ve Kongre Merkezi, Büyükçekmece",
+   "Franchise ve bayilik: yeme-içme, güzellik ve kişisel bakım, lojistik, mobilya, BT/yazılım",
+   "Franchise girişimcileri, yatırımcılar, franchise veren markalar, perakende zincirleri",
+   "Organizatör Tüyap",
+   "https://www.tuyap.com.tr/en/exhibitions/franchise-istanbul-expo",
+   "E-bilet; fiyat belirtilmedi",
+   "R",
+   "Bir üçüncü taraf 25–28 Mart yazıyor; resmî Tüyap tarihi esas alındı. Aynı günlerde Güzellik ve Bakım İstanbul fuarı da Tüyap'ta."
+  ],
+  [
+   "24. Altın Örümcek Ödülleri — ödül teslim dönemi",
+   "4 Ocak – 14 Şubat 2027",
+   "İstanbul / Türkiye",
+   "Belirtilmedi",
+   "Türkiye web ödülleri: web siteleri, e-ticaret siteleri, dijital projeler",
+   "Dijital ajanslar, e-ticaret markaları, web ekipleri",
+   "Organizatör DorukNet. Halk oylaması 26 Ekim – 20 Kasım 2026, sonuçlar 7–14 Aralık 2026.",
+   "https://www.altinorumcek.com/",
+   "Belirtilmedi",
+   "U",
+   "Tek bir tören günü açıklanmadı; teslim penceresi."
   ]
  ],
  "Pazarlama, CRM ve müşteri deneyimi": [
@@ -766,16 +803,29 @@ window.VERI_TR = {
   ],
   [
    "CX360 Summit 2026 (MDYD — Müşteri Deneyimi Yönetimi ve Teknolojileri Derneği)",
-   "27 Kasım 2026",
+   "27 Kasım 2026, 09:30",
    "İstanbul / Türkiye",
-   "Açıklanmadı (2025'te Swissôtel The Bosphorus)",
-   "Uçtan uca müşteri deneyimi, yapay zekâ destekli müşteri hizmetleri, CX liderliği; çağrı ve iletişim merkezi sektörünün ana zirvesi",
+   "Swissôtel The Bosphorus",
+   "\"İz Bırakan Deneyimler\": uçtan uca müşteri deneyimi, yapay zekâ destekli müşteri hizmetleri, CX liderliği",
    "CX, çağrı merkezi ve müşteri hizmetleri yöneticileri (2025'te ~800 kişi)",
    "Banu Hızlı (MDYD Başkanı), Prof. Türker Kılıç, Arzu Kaprol, Berk Kocaman (Deloitte); Parloa sponsor. Dernek eski ÇMD zirvelerinin devamı.",
    "https://www.mdyd.org.tr/cx360-summit-2026",
    "Ön kayıt formu; fiyat açıklanmadı",
-   "U",
-   "Tarih Parloa'nın etkinlik sayfasından; dernek sayfasında tarih metni yok. Türkiye'de bu dönemin en büyük CX zirvesi."
+   "R",
+   "Türkiye'de bu dönemin en büyük CX zirvesi."
+  ],
+  [
+   "CX Awards Turkey 2027 (10. dönem, 10. yıl özel edisyonu)",
+   "14 Ocak 2027, 17:30–24:00",
+   "İstanbul / Türkiye",
+   "Fişekhane, Kazlıçeşme",
+   "Müşteri deneyimi projeleri: 5 ana kategori, 20 sektör, 3 ödül kademesi; jüri oturumu ve canlı proje sunumları",
+   "CX, CRM ve müşteri hizmetleri yöneticileri; marka temsilcileri",
+   "Organizatör Nice Medya; bağımsız akademik ve sektör jürisi. 2026 edisyonu: 61 proje, 25 ödül.",
+   "https://www.cxawardsturkey.com/",
+   "Proje başvurusu 900 € + KDV (gala davetiyesi dahil); son başvuru 1 Kasım 2026",
+   "R",
+   "Başvuru son günü yaklaşıyor."
   ]
  ],
  "Ödeme, fintech ve fraud": [
@@ -884,6 +934,19 @@ window.VERI_TR = {
    "Online QR'lı ziyaretçi kaydı",
    "U",
    "Organizatör rolü doğrulanmadı; kapsamı lojistikten çok üretim."
+  ],
+  [
+   "Eurasia Rail 2027 (12.)",
+   "24–26 Mart 2027",
+   "İstanbul / Türkiye",
+   "İstanbul Fuar Merkezi",
+   "Raylı sistemler, demiryolu altyapısı, raylı lojistik",
+   "Üreticiler, tedarikçiler, alıcılar (70+ ülke)",
+   "Organizatör Hyve Group (listeleme sitelerine göre)",
+   "https://railmarket.com/events/eurasia-rail-2027",
+   "Açıklanmadı",
+   "U",
+   "Resmî site erişilemedi; kısmen ilgili."
   ]
  ],
  "Yapay zekâ, veri ve otomasyon": [
@@ -950,7 +1013,7 @@ window.VERI_TR = {
    "https://zirve.turkiye.ai/",
    "Standart 30.000 TL (1 Kasım'a kadar), son şans 36.000 TL; 2. gün online ücretsiz",
    "R",
-   "Resmî site ve Kriko 11–12 Kasım'ı doğruladı; Protokol.org.tr'deki 19–20 Kasım bilgisi eski."
+   "Resmî site 11–12 Kasım'ı doğruluyor. 2026 konuşmacıları henüz açıklanmadı; Kriko'da listelenen isimler 2025 konuşmacıları."
   ],
   [
    "AfterFAANG Yapay Zekâ Zirvesi",
@@ -964,6 +1027,32 @@ window.VERI_TR = {
    "Ücret ve kayıt bağlantısı açık kaynakta yok; topluluk davetiyesi (iletisim@afterfaang.com)",
    "U",
    "Kullanıcı listesindeki \"After FAAN\" = AfterFAANG. Resmî etkinlik sayfası yok; duyuru LinkedIn (~2 Ekim 2026)."
+  ],
+  [
+   "DevFest Istanbul 2026 (GDG Istanbul)",
+   "19 Aralık 2026",
+   "İstanbul / Türkiye",
+   "Wyndham Grand İstanbul Levent",
+   "AI, Cloud, Web, Mobile, Backend; teknik derin dalışlar ve keynote'lar",
+   "Geliştiriciler, tasarımcılar, teknoloji ekipleri; geçen yıl 2.500+ katılımcı",
+   "GDG Istanbul topluluğu; 4 track",
+   "https://devfest.istanbul/",
+   "Kayıt yakında açılacak",
+   "R",
+   "Takip listesinden ana listeye alındı."
+  ],
+  [
+   "DevFest'26 İzmir (GDG İzmir)",
+   "5 Aralık 2026",
+   "İzmir / Türkiye",
+   "Tepekule Kongre Merkezi, Bayraklı",
+   "En yeni Google ve yapay zekâ teknolojileri",
+   "Geliştiriciler; 2.000+ katılımcı",
+   "GDG İzmir; konuşmacılar yakında",
+   "https://devfestizmir.com/",
+   "Erken kayıt Kommunity'de açık",
+   "R",
+   "Takip listesinden ana listeye alındı."
   ]
  ],
  "Genel teknoloji, bulut ve dijital dönüşüm": [
@@ -1002,7 +1091,7 @@ window.VERI_TR = {
    "Teknoloji ve girişim yöneticileri, kurumsal inovasyon, yatırımcılar",
    "60+ konuşmacı (BCG, McKinsey, AWS, Microsoft, OpenAI ve Türk kurumsal/VC yöneticileri), Startup Lounge, Webrazzi Arena; Hepsiburada platin sponsor",
    "https://webrazzi.com/etkinlik/2026/summit",
-   "48.500 TL+KDV tekil; 43.500 TL+KDV grup (3+)",
+   "Erken kayıt 48.500 TL + KDV; 3+ grup 43.500 TL + KDV; Startup Lounge tükendi",
    "R",
    "Dealroom, Platin ve 10times ile çapraz doğrulandı."
   ],
@@ -1013,7 +1102,7 @@ window.VERI_TR = {
    "Bilgi yok",
    "Dijital dönüşüm, akıllı fabrikalar, sürdürülebilirlik, yeşil dönüşüm ve e-ticaret (KOBİ/sanayici odaklı)",
    "Sanayi şirketleri, üreticiler, OSB firmaları (ilk edisyon 550 katılımcı)",
-   "Bilgi yok",
+   "Program: Trendyol \"E-İhracat Yolculuğu\", Zebra, TAXTEN, Disüder. Aynı organizasyonun 19 Kasım Bakü edisyonu var.",
    "https://digitalimpact.tr/",
    "Ücretsiz kayıt",
    "R",
@@ -1122,6 +1211,19 @@ window.VERI_TR = {
    "Sonbahar indirimi 3.150 TL (31 Ekim'e kadar); sonra Startup 4.200 TL, Profesyonel 6.000 TL, Yatırımcı 9.600 TL, Kurumsal 5 kişi 14.400 TL (KDV dahil)",
    "R",
    ""
+  ],
+  [
+   "14. Kamu Bilişim Zirvesi",
+   "25–28 Mart 2027",
+   "Antalya / Türkiye",
+   "Açıklanmadı",
+   "Kamu bilişimi ve dijital dönüşüm; yerli teknoloji, kamu BT yöneticileri ile tedarikçi buluşmaları",
+   "Kamu bilişim yöneticileri, BT tedarikçileri",
+   "Organizatör Kamu Bilişim Derneği; program henüz yok",
+   "https://www.kamubilisimzirvesi.com/",
+   "Açıklanmadı",
+   "D",
+   "Tarih çelişkili: ana sayfa 25–28 Mart, program sayfasındaki gün başlıkları 18–21 Mart 2027. KBD'den teyit edilmeli."
   ]
  ],
  "Diğer ilgili etkinlikler": [
@@ -1262,27 +1364,6 @@ window.TAKIP_TR = [
   "https://takeoffistanbul.com/tr/"
  ],
  [
-  "DevFest Istanbul 2026 (GDG Istanbul)",
-  "2025: 44 konuşmacı, 2.500+ katılımcı",
-  "Kasım–Aralık 2026",
-  "Site: \"tarih ve mekân yakında açıklanacak\"; önceki edisyonlar Kasım sonu, UNIQ İstanbul.",
-  "https://devfest.istanbul/"
- ],
- [
-  "DevFest'26 İzmir (GDG İzmir)",
-  "Kasım–Aralık (geleneksel)",
-  "Kasım–Aralık 2026",
-  "devfestizmir.com hâlâ 2025 edisyonunu gösteriyor; Instagram adı DevFest'26 olarak güncellendi, tarih yok.",
-  "https://devfest.gdgizmir.org/"
- ],
- [
-  "IDC Directions Türkiye 2026",
-  "Ekim–Aralık (geleneksel)",
-  "Q4 2026",
-  "Sayfa yayında: yarım gün (09:00–12:00), Wyndham Grand Levent, tema \"Agent Economy\"; tarih hâlâ yok.",
-  "https://event.idc.com/event/idc-directions-turkiye/"
- ],
- [
   "Trendyol İş Ortağı Zirvesi",
   "Tarih bilinmiyor",
   "—",
@@ -1311,13 +1392,6 @@ window.TAKIP_TR = [
   "https://aitour.microsoft.com/"
  ],
  [
-  "IDC CIO Summit Türkiye 2026",
-  "Mayıs 2026 (Sapanca) muhtemel",
-  "Belirsiz",
-  "Sayfa var, tarih görünmüyor; Q4 mü kontrol edilmeli.",
-  "https://event.idc.com/event/idc-cio-summit-turkiye/"
- ],
- [
   "DATAMIND 2026 (Data Science Türkiye × Uludağ VBT)",
   "—",
   "Belirsiz (Bursa bağlantılı olabilir)",
@@ -1330,13 +1404,6 @@ window.TAKIP_TR = [
   "19–20 Kasım 2026 (?)",
   "Yalnızca arama özetinde; Google Cloud etkinlik takviminde İstanbul kaydı yok. Gerçekse önemli.",
   "https://cloud.google.com/events"
- ],
- [
-  "Private Label Zirvesi (11., PLAT)",
-  "10. edisyon 11 Aralık 2025, Crowne Plaza Kurtköy",
-  "Aralık 2026",
-  "Crowne Plaza Istanbul Asia; gün açıklanmadı. Bir arama özetindeki \"26 Kasım Çırağan\" bilgisi yanlış eşleşme.",
-  "https://privatelabelzirvesi.com/"
  ],
  [
   "SAP NOW Türkiye 2026",
@@ -1395,18 +1462,88 @@ window.TAKIP_TR = [
   "https://www.biletix.com/"
  ],
  [
-  "Altın Örümcek (24.)",
-  "—",
-  "Halk oylaması 26 Ekim – 20 Kasım; sonuçlar 7–14 Aralık",
-  "Ödül takdimi Ocak–Şubat 2027; tören dönem dışı. Web sitesi ve dijital işler için oylama takip edilebilir.",
-  "https://www.altinorumcek.com/"
- ],
- [
   "UTİKAD 40. Yıl Balosu / Türkiye Logistics Summit",
   "Logistics Summit 2024–2025 Ekim/Kasım",
   "27 Kasım 2026 (balo, Radisson Collection Vadistanbul)",
   "2026'da içerik zirvesi duyurulmadı; balo networking etkinliği.",
   "https://www.utikad.org.tr/"
+ ],
+ [
+  "2027 Q1 · The ONE Awards — Yılın İtibarlıları (Marketing Türkiye × Akademetre)",
+  "3 Şubat 2025, Divan Kuruçeşme (11.); 12. edisyon 2026'da yapıldı",
+  "Ocak sonu – Şubat başı 2027",
+  "70+ kategori, 12 ilde 1.200 kişilik araştırma. Yüksek öncelik; resmî alan adı çözümlenmiyor.",
+  "https://www.marketingturkiye.com.tr/"
+ ],
+ [
+  "2027 Q1 · MIXX Awards Türkiye (IAB Türkiye, 17.)",
+  "16. tören 26 Mart 2026, Divan Kuruçeşme",
+  "Başvuru Aralık 2026 – Şubat 2027; tören Mart 2027 sonu",
+  "Dijital pazarlama ödülleri; 2026'da 862 başvuru.",
+  "https://www.mixxawards-tr.org/"
+ ],
+ [
+  "2027 Q1 · Genesys Future of CX — Türkiye",
+  "13 Ocak 2026, Mandarin Oriental Bosphorus",
+  "Ocak 2027 (olası)",
+  "Agentic AI, deneyim ekonomisi; 2027 duyurusu yok.",
+  "https://www.genesys.com/en-gb/events/futureofcx-turkiye"
+ ],
+ [
+  "2027 Q1 · ETİD Oniki E-Ticaret ve E-İhracat Konferansları",
+  "Aylık şehir turu (Bursa, Antalya, Ankara, Denizli durakları)",
+  "Q1 2027'de Bursa/Ankara durağı olabilir",
+  "2027 programı yayımlanmadı.",
+  "https://etid.org.tr/"
+ ],
+ [
+  "2027 Q1 · Webrazzi 2027 takvimi",
+  "2026: AI 8 Nisan, Summit 21 Ekim, Fintech 9 Aralık",
+  "Kasım 2026'da açıklanması bekleniyor",
+  "Q1'de geçmişte Webrazzi konferansı yoktu.",
+  "https://webrazzi.com/etkinlik"
+ ],
+ [
+  "2027 Q1 · TBD 43. Ulusal Bilişim Kurultayı",
+  "42.: 5–6 Şubat 2026, Ankara Meyra Palace (1.100+ katılımcı)",
+  "Aralık 2026 – Şubat 2027",
+  "tbd.org.tr yaklaşan etkinlik olarak gösteriyor, tarih yok.",
+  "https://www.tbd.org.tr/"
+ ],
+ [
+  "2027 Q1 · TBD Siber Güvenlik Ekosisteminin Geliştirilmesi Zirvesi (10.)",
+  "9.: 2 Nisan 2026, Ankara",
+  "Mart–Nisan 2027",
+  "Tarih yok.",
+  "https://www.tbd.org.tr/"
+ ],
+ [
+  "2027 Q1 · Türkiye Siber Güvenlik Kümelenmesi — Kamu Siber Güvenlik Günü",
+  "51. edisyon Eylül 2026",
+  "İki ayda bir; Q1'de 1–2 edisyon olası",
+  "Etkinlik sayfası sertifika hatası verdi.",
+  "https://www.siberkume.org.tr/"
+ ],
+ [
+  "2027 Q1 · IDC IT Security Summit Türkiye",
+  "IDC takviminde 26 Mart 2026 (Wyndham Grand Levent)",
+  "Mart 2027 (?)",
+  "Ekim'deki IDC Security Summit ile aynı seri olabilir; takvim çelişkili.",
+  "https://event.idc.com/event/it-security-summit-turkiye/"
+ ],
+ [
+  "2027 Q1 · Microsoft AI Tour İstanbul",
+  "Önceki edisyon tarihi doğrulanamadı",
+  "Q1 2027 (olası)",
+  "Tur Haziran 2027'ye kadar sürüyor; İstanbul durağı duyurulmadı.",
+  "https://aitour.microsoft.com/"
+ ],
+ [
+  "2027 ileri takvim (Türkiye)",
+  "—",
+  "—",
+  "Webrazzi AI ~Nisan 2027 · Yapay Zekâ Çağında E-Ticaretin Lojistiği Zirvesi ~Nisan 2027 · AWS Community Day Nisan–Mayıs · IDC CIO Summit Mayıs · TechFinTech 5 Mayıs · IDEF 3–9 Mayıs · Perakende Günleri 2–3 Haziran · GITEX AI Türkiye 15–16 Eylül 2027 · HOW 23–25 Eylül 2027.",
+  "https://www.gitexturkiye.com/"
  ]
 ];
 
@@ -1506,6 +1643,14 @@ window.DONEM_DISI_TR = [
  [
   "Brandverse Awards",
   "Haziran 2026 (yapıldı)"
+ ],
+ [
+  "IDC Directions Türkiye 2026",
+  "16 Haziran 2026, Wyndham Grand Levent (yapıldı)"
+ ],
+ [
+  "IDC CIO Summit Türkiye 2026",
+  "6–7 Mayıs 2026, Elite World Grand Sapanca (yapıldı)"
  ]
 ];
 
@@ -1746,12 +1891,12 @@ window.GECMIS_TR = [
  ]
 ];
 
-// Editör modunda "herkes için kaldır" listesine eklenen etkinlikler (etkinlik adıyla). Bu listedekiler sayfayı açan herkes için gizlenir.
+// Editör modunda "herkes için kaldır" listesine eklenen etkinlikler (etkinlik adıyla).
 window.KALDIRILAN = [];
 
 </script>
 <script>
-// Yurt dışı / Global — Eylül–Aralık 2026 (güncelleme: 12 Ekim 2026)
+// Yurt dışı / Global — Ekim 2026 – Mart 2027 (güncelleme: 12 Ekim 2026)
 window.VERI_GL = {
  "E-ticaret ve perakende": [
   [
@@ -1839,7 +1984,7 @@ window.VERI_GL = {
    "Riyadh Front",
    "Dijital ticaret, yeni nesil ödemeler, omnichannel, POS/checkout, sadakat ve dijital pazarlama, son mil, e-fatura (ZATCA)",
    "Perakendeciler, bankalar, regülatörler, e-ticaret platformları, lojistik",
-   "4.500+ katılımcı, 200 firma (üçüncü taraf)",
+   "Stratejik partner Monsha'at; ALDO, Chalhoub, SACO, IKEA–Alsulaiman konuşmacıları; Shop Arabia KSA ve Home Delivery KSA aynı yerde",
    "https://www.terrapinn.com/exhibition/seamless-saudi-arabia/",
    "Ücretsiz kayıt",
    "R",
@@ -2013,6 +2158,149 @@ window.VERI_GL = {
    "Bilgi yok",
    "D",
    "Resmî site HTTP 400 verdi; gatewaytouae.com listesi."
+  ],
+  [
+   "Retail Reshaped 2026",
+   "17 Kasım 2026",
+   "Hamburg / Almanya",
+   "NENI Hamburg",
+   "Perakende, e-ticaret, retail media",
+   "Reklamverenler, perakendeciler, yayıncılar, ajanslar",
+   "Organizatör doğrulanmadı",
+   "https://luminik.io/",
+   "Bilgi yok",
+   "D",
+   "Yalnızca arama özeti."
+  ],
+  [
+   "NRF 2027: Retail's Big Show",
+   "10–12 Ocak 2027",
+   "New York / ABD",
+   "Javits Center",
+   "Perakendede yapay zekâ ve ajanlar, mağaza teknolojisi, tedarik zinciri, robotik; ilk kez NRF Rev (iade ve tersine lojistik)",
+   "Perakende üst yöneticileri; 40.000+ katılımcı",
+   "Organizatör NRF; dünyanın en büyük perakende fuarı",
+   "https://nrfbigshow.nrf.com/",
+   "All-Access perakendeci üye 1.200 $ (19 Kasım'a kadar) / üye olmayan 2.200 $; Expo Pass perakendeciye 30 Aralık'a kadar ücretsiz; uluslararası delegasyon (10+ perakendeci, 15 Aralık'a kadar) 1.100 $; perakendeci dışı 2.600–3.800 $",
+   "R",
+   "Yan programlar: Commerce Media Saturday 9 Ocak (195 $), Supply Chain Sunday 10 Ocak (perakendeciye ücretsiz), AI Monday 11 Ocak."
+  ],
+  [
+   "Shoptalk Luxe 2027",
+   "2–4 Şubat 2027",
+   "Abu Dabi / BAE",
+   "Açıklanmadı",
+   "Lüks perakende ve e-ticaret, müşteri deneyimi, yapay zekâ",
+   "Lüks ve premium perakende yöneticileri",
+   "Shoptalk Commerce (Hyve)",
+   "https://www.shoptalk.com/",
+   "Bilinmiyor",
+   "R",
+   "Başlangıç tarihi resmî; bitiş günü ve mekân doğrulanmadı."
+  ],
+  [
+   "EuroCIS 2027",
+   "16–18 Şubat 2027",
+   "Düsseldorf / Almanya",
+   "Messe Düsseldorf",
+   "Perakende teknolojisi: ödeme ve kasa, yapay zekâ, mağaza analitiği, omnichannel",
+   "Perakende BT ve operasyon yöneticileri",
+   "Messe Düsseldorf",
+   "https://www.eurocis.com/",
+   "Bilinmiyor",
+   "R",
+   "Avrupa'nın en büyük perakende teknolojisi fuarı."
+  ],
+  [
+   "eTail Palm Springs 2027",
+   "22–25 Şubat 2027",
+   "Palm Desert / ABD",
+   "JW Marriott Desert Springs",
+   "E-ticaret büyümesi, perakendede yapay zekâ, müşteri edinme, kişiselleştirme",
+   "E-ticaret ve DTC yöneticileri",
+   "WBR",
+   "https://etailwest.wbresearch.com/",
+   "Bilinmiyor",
+   "R",
+   "Mekân üçüncü taraf bilgisi."
+  ],
+  [
+   "Shoptalk Spring 2027",
+   "22–24 Mart 2027",
+   "Las Vegas / ABD",
+   "Mandalay Bay",
+   "E-ticaret ve perakende inovasyonu, perakendede yapay zekâ, retail media",
+   "Perakende ve marka yöneticileri; 10.000+ katılımcı",
+   "Shoptalk (Hyve)",
+   "https://www.shoptalk.com/",
+   "Nitelikli perakendeci/marka ücretsiz (hosted); perakendeci 1.250 $ (liste 2.595 $); genel 3.245 $; ajans 2.495 $",
+   "R",
+   "Perakendecilere genelde ücretsiz/sübvanse bilet programı var."
+  ],
+  [
+   "NRF 2027: Retail's Big Show Middle East (ilk edisyon)",
+   "22–24 Mart 2027",
+   "Riyad / Suudi Arabistan",
+   "Riyadh International Exhibition & Convention Center",
+   "Perakende teknolojisi, yapay zekâ, lojistik, ödeme, sürükleyici ticaret",
+   "Bölge ve küresel perakende liderleri, kamu, yatırımcılar",
+   "NRF Global Network",
+   "https://nrfbigshowmiddleeast.nrf.com/",
+   "Açıklanmadı",
+   "R",
+   "Shoptalk Spring ve Adobe Summit ile aynı hafta."
+  ],
+  [
+   "E-commerce Berlin Expo 2027 (11.)",
+   "17–18 Şubat 2027",
+   "Berlin / Almanya",
+   "Messe Berlin",
+   "B2B e-ticaret: pazaryeri, D2C, ödeme, lojistik, pazarlama; 4 sahne, 4 masterclass",
+   "Online mağazalar, markalar, perakendeciler",
+   "14.000+ katılımcı, 320 katılımcı firma, 200 konuşmacı",
+   "https://ecommerceberlin.com/",
+   "Perakendeci ve markalara ücretsiz; hizmet sağlayıcı 49–129 € + KDV",
+   "R",
+   "Avrupa'nın en büyük e-ticaret fuarlarından; EuroCIS ile aynı hafta."
+  ],
+  [
+   "Prosper Show 2027",
+   "2–3 Mart 2027",
+   "Las Vegas / ABD",
+   "Wynn Las Vegas",
+   "Amazon ve diğer pazaryerleri, satıcı operasyonu, reklam",
+   "Pazaryeri satıcıları, marka sahipleri",
+   "Prosper / Jungle Scout ekosistemi",
+   "https://prospershow.com/",
+   "Fiyat sayfası erişilemedi",
+   "R",
+   ""
+  ],
+  [
+   "eTail Asia 2027",
+   "16–17 Mart 2027",
+   "Singapur",
+   "Equarius Hotel, Sentosa",
+   "E-ticaret, dijital, pazarlama",
+   "500+ katılımcı; pazarlama ve e-ticaret",
+   "WBR",
+   "https://etailasia.wbresearch.com/",
+   "Sayfada yok",
+   "R",
+   ""
+  ],
+  [
+   "LIVE: Retail Week x The Grocer 2027",
+   "18 Mart 2027",
+   "Londra / İngiltere",
+   "Convene, 155 Bishopsgate",
+   "Büyüme ve kârlılık, yapay zekâ, müşteri deneyimi, dönüşüm",
+   "700+ kıdemli perakende karar vericisi",
+   "Retail Week / The Grocer",
+   "https://live.retail-week.com/",
+   "2027 fiyatı yok",
+   "R",
+   ""
   ]
  ],
  "Pazarlama, CRM ve müşteri deneyimi": [
@@ -2322,7 +2610,7 @@ window.VERI_GL = {
    "Grand Hotel Opduin, De Koog",
    "Kanıta dayalı büyüme, CRO ve deney; \"Agent-Ready Growth Infrastructure\", deney olgunluğu, karar hızı",
    "~200 CRO, deney, UX, ürün ve veri uzmanı",
-   "10 ana konuşma, 42 oturum; sunucu Ton Wesseling",
+   "13. edisyon, tema \"Mystic World\"; 10 ana konuşma, 42 oturum; sunucu Ton Wesseling. Biletler haftalık partilerle açılıyor.",
    "https://www.conversionhotel.com/",
    "Yemekli 2 gece: paylaşımlı oda 1.950 € (2 kişi), tek kişilik 1.200 € (KDV hariç)",
    "R",
@@ -2351,6 +2639,149 @@ window.VERI_GL = {
    "Bilgi yok",
    "https://eaca.eu/effie-awards-europe/",
    "Bilgi yok",
+   "R",
+   ""
+  ],
+  [
+   "CustomerX 2026 (RetailX)",
+   "14–15 Ekim 2026",
+   "Londra / İngiltere",
+   "London Olympia",
+   "Perakende ve e-ticarette müşteri deneyimi",
+   "Perakende ve e-ticaret CX liderleri",
+   "Organizatör RetailX",
+   "https://retailx.events/",
+   "Belirtilmedi",
+   "R",
+   ""
+  ],
+  [
+   "Retail MediaX USA 2026",
+   "12 Kasım 2026",
+   "New York / ABD",
+   "Açıklanmadı",
+   "Retail media ağlarını kurma, ölçekleme ve gelire dönüştürme; ölçümleme, veri, kreatif",
+   "Perakendeciler, markalar, retail media ağları, ajanslar",
+   "RetailX; serinin ABD'deki ilk edisyonu",
+   "https://channelx.world/events/retail-mediax-usa-2026/",
+   "Ücretli; fiyat yayımlanmadı",
+   "R",
+   ""
+  ],
+  [
+   "Retail MediaX UAE 2026",
+   "25 Kasım 2026",
+   "Dubai / BAE",
+   "Açıklanmadı",
+   "Retail media: artımsallık, MMM, clean room, pazaryeri ve mağaza içi medya, CTV",
+   "Perakendeciler, markalar, ajanslar",
+   "RetailX",
+   "https://retailx.events/",
+   "Ücretli",
+   "U",
+   "Bir kayıtta 26 Kasım; mekân açıklanmadı."
+  ],
+  [
+   "SXSW 2027",
+   "13–21 Mart 2027 (Innovation 15–20 Mart)",
+   "Austin / ABD",
+   "Austin şehir merkezi",
+   "Yapay zekâ, marka ve pazarlama, kültür, teknoloji",
+   "Pazarlama, marka ve inovasyon liderleri",
+   "SXSW",
+   "https://www.sxsw.com/",
+   "Rozet fiyatı alınamadı",
+   "R",
+   ""
+  ],
+  [
+   "Adobe Summit 2027",
+   "22–25 Mart 2027",
+   "Las Vegas / ABD + çevrimiçi",
+   "The Venetian Convention & Expo Center",
+   "Dijital deneyim, MarTech, içerik ve kişiselleştirme için yapay zekâ, müşteri verisi",
+   "CMO'lar, dijital pazarlama ve CX ekipleri",
+   "Adobe; 2026'ya göre bir ay erken",
+   "https://business.adobe.com/summit/",
+   "Erken kayıt indirimi var",
+   "U",
+   ""
+  ],
+  [
+   "CX UK Exchange 2027 (6.)",
+   "26–27 Ocak 2027",
+   "Londra / İngiltere",
+   "Hilton Syon Park",
+   "Kesintisiz müşteri yolculuğu, yapay zekâ ve insan dengesi, sadakat, CX ROI",
+   "CX ve dijital liderler; ~55 kişi, davetli",
+   "CX Network (IQPC)",
+   "https://www.cxnetwork.com/events-customer-experience-exchange-uk",
+   "Davetli",
+   "R",
+   "Üçüncü taraflar 25–26 Ocak diyor; resmî sayfa esas alındı."
+  ],
+  [
+   "CCW Orlando 2027",
+   "25–27 Ocak 2027",
+   "Orlando / ABD",
+   "Hyatt Regency Orlando",
+   "Müşteri iletişim merkezi, müşteri hizmetleri, CX",
+   "CX ve contact center yöneticileri",
+   "IQPC",
+   "https://www.customercontactweek.com/",
+   "Bilgi yok",
+   "U",
+   ""
+  ],
+  [
+   "IAB Annual Leadership Meeting 2027",
+   "1–3 Şubat 2027",
+   "San Antonio / ABD",
+   "JW Marriott San Antonio Hill Country",
+   "Yapay zekâ, ölçümleme, gizlilik, commerce media, creator ekonomisi",
+   "Markalar, ajanslar, medya; 1.000+ kişi, %70'i VP ve üstü",
+   "IAB",
+   "https://www.iab.com/events/2027-iab-annual-leadership-meeting/",
+   "Erken: üye 2.995 $, üye dışı 3.995 $; medya satın alan markalara ücretsiz",
+   "R",
+   ""
+  ],
+  [
+   "B2BMX 2027",
+   "22–24 Şubat 2027",
+   "Carlsbad / ABD",
+   "Omni La Costa",
+   "B2B pazarlama ve satış",
+   "B2B pazarlamacılar",
+   "Demand Gen Report",
+   "https://www.demandgenreport.com/",
+   "Bilgi yok",
+   "U",
+   ""
+  ],
+  [
+   "The MarTech Summit Asia 2027",
+   "2–3 Mart 2027",
+   "Singapur",
+   "Raffles City Convention Centre",
+   "Ajan tabanlı pazarlama, AEO/GEO, retail media, CDP 2.0, sadakat",
+   "CMO, CRM/CX, büyüme ve veri liderleri; ~600 kişi",
+   "BEETC",
+   "https://themartechsummit.com/singapore",
+   "Nitelikli markalara sınırlı ücretsiz pas",
+   "R",
+   ""
+  ],
+  [
+   "ad:tech New Delhi 2027",
+   "17–18 Mart 2027",
+   "Yeni Delhi / Hindistan",
+   "Yashobhoomi, IICC Dwarka",
+   "Dijital ve performans pazarlama, adtech, omnichannel kimlik, ticaret",
+   "Pazarlamacılar, ajanslar",
+   "Comexposium",
+   "https://newdelhi.ad-tech.com/",
+   "2027 fiyatı yok",
    "R",
    ""
   ]
@@ -2472,6 +2903,58 @@ window.VERI_GL = {
    "Bilet linki var; fiyat sitede yok",
    "R",
    "GITEX Global ile aynı hafta."
+  ],
+  [
+   "Fintech Meetup 2027",
+   "22–24 Şubat 2027",
+   "Las Vegas / ABD",
+   "The Venetian",
+   "Fintech, bankacılık ve ödeme; ikili toplantı formatı",
+   "Fintech, banka, ödeme kuruluşları",
+   "Hyve",
+   "https://www.fintechmeetup.com/",
+   "Bilet sayfası erişilemedi",
+   "U",
+   ""
+  ],
+  [
+   "MoneyLIVE Summit 2027",
+   "2–3 Mart 2027",
+   "Londra / İngiltere",
+   "Business Design Centre",
+   "Bankacılık ve ödemeler",
+   "Banka, ödeme ve fintech yöneticileri",
+   "MoneyLIVE (Marketforce)",
+   "https://www.moneylive.com/",
+   "Bilgi yok",
+   "U",
+   ""
+  ],
+  [
+   "Merchant Payments Ecosystem (MPE) 2027 (20.)",
+   "9–11 Mart 2027",
+   "Berlin / Almanya",
+   "InterContinental Berlin",
+   "Kart acquiring, açık bankacılık, gömülü finans, ödeme orkestrasyonu, agentic commerce, PSD3",
+   "Üye işyerleri, PSP, acquirer, fintech, regülatör; 1.600+ kişi",
+   "MPE; 170+ konuşmacı",
+   "https://www.merchantpaymentsecosystem.com/",
+   "Erken kayıt %20 indirim 11 Kasım 2026'ya kadar; üye işyerlerine ücretsiz",
+   "U",
+   "E-ticaret ödeme ekipleri için Avrupa'nın en odaklı etkinliği. Resmî site 403."
+  ],
+  [
+   "MRC Vegas 2027",
+   "15–18 Mart 2027",
+   "Las Vegas / ABD",
+   "ARIA Resort & Casino",
+   "Fraud önleme, chargeback, risk ve ödeme optimizasyonu",
+   "Üye işyerleri, çözüm sağlayıcılar, finans kurumları",
+   "Merchant Risk Council",
+   "https://merchantriskcouncil.org/events/2027/mrc-vegas-2027",
+   "Kayıt 10 Kasım 2026'da açılıyor; erken kayıt 27 Ocak 2027'ye kadar",
+   "R",
+   ""
   ]
  ],
  "Lojistik, tedarik zinciri ve operasyon": [
@@ -2747,6 +3230,84 @@ window.VERI_GL = {
    "Bilgi yok",
    "R",
    "Kısmen ilgili."
+  ],
+  [
+   "NRF Supply Chain Sunday",
+   "10 Ocak 2027",
+   "New York / ABD",
+   "Lavan New York",
+   "Perakende tedarik zinciri",
+   "Perakendeciler",
+   "NRF Big Show yan programı",
+   "https://nrfbigshow.nrf.com/",
+   "Perakendeci ve markalara ücretsiz",
+   "R",
+   ""
+  ],
+  [
+   "DELIVER Middle East 2027 (2.)",
+   "20–21 Ocak 2027",
+   "Dubai / BAE",
+   "Hilton Dubai Al Habtoor City",
+   "Perakende, ticaret ve lojistik kesişimi; 1'e 1 toplantılar",
+   "Kıdemli perakende ve tedarik zinciri liderleri; 200 hosted pass",
+   "DELIVER; ana sponsor DP World",
+   "https://www.deliver.events/middle-east",
+   "Nitelikli perakendeci ve markalara hosted pass",
+   "R",
+   "19 Ocak'ta seçilmiş konuklar için DP World liman turu."
+  ],
+  [
+   "Intralogistica Poland 2027 (4.)",
+   "2–4 Şubat 2027",
+   "Varşova / Polonya",
+   "Ptak Warsaw Expo",
+   "Depo otomasyonu, robotik, WMS, iç taşıma",
+   "Depo ve lojistik yöneticileri",
+   "Ptak Warsaw Expo",
+   "https://warsawexpo.eu/",
+   "Bilgi yok",
+   "R",
+   ""
+  ],
+  [
+   "Manifest Vegas 2027",
+   "8–10 Şubat 2027",
+   "Las Vegas / ABD",
+   "The Venetian",
+   "Tedarik zinciri ve lojistik teknolojisi, depo, taşımacılık, son mil",
+   "8.500+ kişi, 2.000+ yük sahibi, 400+ konuşmacı (Gap, Google, J&J)",
+   "Manifest",
+   "https://manife.st/",
+   "All-Access 2.195 $ (liste 2.895 $); hosted shipper ücretsiz (başvuruyla)",
+   "R",
+   ""
+  ],
+  [
+   "RILA LINK 2027",
+   "21–24 Şubat 2027",
+   "Orlando / ABD",
+   "Gaylord Palms",
+   "Perakende tedarik zinciri",
+   "Büyük perakendecilerin tedarik zinciri yöneticileri",
+   "RILA",
+   "https://www.rila.org/retail-supply-chain-conference",
+   "Fiyat yok; ücretsiz \"LINK Connect\" seçeneği var",
+   "R",
+   ""
+  ],
+  [
+   "LogiMAT 2027 (25. yıl)",
+   "16–18 Mart 2027",
+   "Stuttgart / Almanya",
+   "Messe Stuttgart",
+   "İç lojistik ve depo teknolojisi; \"MIND MEETS MACHINE – What's next?\"",
+   "Depo, intralojistik ve operasyon yöneticileri",
+   "EUROEXPO",
+   "https://www.logimat-messe.de/",
+   "Resmî sayfada fiyat yok",
+   "R",
+   "Avrupa'nın en büyük intralojistik fuarı."
   ]
  ],
  "Yapay zekâ, veri ve otomasyon": [
@@ -2970,6 +3531,136 @@ window.VERI_GL = {
    "Ücretsiz (kayıt)",
    "R",
    "Londra ayağı 30 Eylül'de yapıldı."
+  ],
+  [
+   "Apply AI Summit 2026 (Avrupa Komisyonu)",
+   "17 Kasım 2026",
+   "Brüksel / Belçika + çevrimiçi",
+   "The EGG",
+   "AB'nin Apply AI stratejisi; sektörlerde yapay zekâ uygulaması",
+   "Politika yapıcılar, sanayi, KOBİ'ler",
+   "Avrupa Komisyonu",
+   "https://digital-skills-jobs.europa.eu/en/latest/events/apply-ai-summit",
+   "Muhtemelen ücretsiz",
+   "U",
+   "AB yapay zekâ regülasyonu ve destekleri için bağlam."
+  ],
+  [
+   "AI Summit Europe 2026",
+   "24–27 Kasım 2026",
+   "Vilnius / Litvanya + çevrimiçi",
+   "Belirtilmedi",
+   "İş dünyasında pratik yapay zekâ, süreç otomasyonu; finans, lojistik, üretim vakaları",
+   "İş liderleri, inovasyon ekipleri",
+   "aisummiteurope.eu",
+   "https://aisummiteurope.eu/",
+   "Yerinde ~1.000 €'dan başlıyor (partner kaynağı)",
+   "U",
+   ""
+  ],
+  [
+   "AI & Big Data Expo Global 2027 (TechEx Global)",
+   "3–4 Şubat 2027",
+   "Londra / İngiltere",
+   "Olympia London",
+   "Üretken yapay zekâ, veri, ML; aynı yerde Physical AI, Cyber Security & Cloud, Intelligent Automation, Digital Transformation",
+   "Kurumsal veri ve yapay zekâ ekipleri, CTO ve CDO'lar",
+   "TechEx Events",
+   "https://www.ai-expo.net/global/",
+   "Ücretsiz geçiş; Gold 699 £; Startup 499 £; Enterprise Leadership başvuruyla ücretsiz",
+   "R",
+   ""
+  ],
+  [
+   "DeveloperWeek 2027",
+   "9–11 Şubat 2027",
+   "Santa Clara / ABD",
+   "Santa Clara Convention Center",
+   "Geliştirici araçları, yapay zekâ ajanları, API'ler, DevOps",
+   "Geliştiriciler, mühendislik yöneticileri",
+   "DevNetwork; hackathon 25 Ocak'tan başlıyor",
+   "https://www.developerweek.com/",
+   "Bilinmiyor",
+   "R",
+   ""
+  ],
+  [
+   "World AI Cannes Festival (WAICF) 2027",
+   "10–11 Şubat 2027",
+   "Cannes / Fransa",
+   "Palais des Festivals et des Congrès",
+   "Kurumsal yapay zekâ, ajanlar, yönetişim",
+   "Avrupalı yapay zekâ karar vericileri",
+   "2027'den itibaren Informa destekli",
+   "https://www.worldaicannes.com/",
+   "Şu an \"register interest\"",
+   "R",
+   ""
+  ],
+  [
+   "AI Engineer Europe 2027",
+   "17–19 Şubat 2027",
+   "Londra / İngiltere",
+   "ExCeL London",
+   "Yapay zekâ mühendisliği: ajanlar, değerlendirme, çıkarım, kodlama ajanları",
+   "Yapay zekâ mühendisleri, teknik liderler",
+   "AI Engineer",
+   "https://ai.engineer/europe/2027",
+   "Bilet TBA",
+   "R",
+   ""
+  ],
+  [
+   "HumanX 2027",
+   "7–10 Mart 2027",
+   "Las Vegas / ABD",
+   "Mandalay Bay",
+   "Kurumsal yapay zekâ: ajanlar, dönüşüm, yatırım",
+   "Kurumsal yapay zekâ karar vericileri; 9.000+ katılımcı",
+   "HumanX",
+   "https://humanx.co/",
+   "Bilinmiyor",
+   "R",
+   ""
+  ],
+  [
+   "Gartner Data & Analytics Summit 2027 (Kuzey Amerika)",
+   "8–10 Mart 2027",
+   "Orlando / ABD",
+   "Gaylord Palms Resort",
+   "Veri ve analitik, yönetişim, yapay zekâya hazır veri, CDAO gündemi",
+   "CDAO'lar, veri ve analitik liderleri",
+   "Gartner",
+   "https://www.gartner.com/en/conferences/na/data-analytics-us",
+   "Bilinmiyor",
+   "U",
+   "gartner.com 403."
+  ],
+  [
+   "Salesforce TDX 2027",
+   "10–11 Mart 2027",
+   "San Francisco / ABD + çevrimiçi",
+   "Moscone West",
+   "Agentforce, Data 360, otomasyon; 400+ teknik oturum",
+   "Geliştiriciler, adminler, mimarlar",
+   "Salesforce",
+   "https://www.salesforce.com/tdx/",
+   "Açıklanmadı",
+   "U",
+   "Resmî sayfada yalnızca \"save the date\"."
+  ],
+  [
+   "NVIDIA GTC 2027",
+   "15–18 Mart 2027",
+   "San Jose / ABD",
+   "San Jose McEnery Convention Center",
+   "Hızlandırılmış hesaplama, üretken, ajan tabanlı ve fiziksel yapay zekâ, AI factory",
+   "Geliştiriciler, CTO'lar, yapay zekâ altyapı ekipleri",
+   "NVIDIA; hibrit",
+   "https://www.nvidia.com/gtc/",
+   "Kayıt sonbaharda açılacak",
+   "R",
+   ""
   ]
  ],
  "Genel teknoloji, bulut ve dijital dönüşüm": [
@@ -3113,8 +3804,8 @@ window.VERI_GL = {
    "30.000+ yüz yüze",
    "https://ignite.microsoft.com/",
    "Yüz yüze fiyat hâlâ açıklanmadı; dijital deneyim (keynote + seçili oturumlar) ücretsiz; kayıt açık",
-   "U",
-   "Resmî site içerik vermedi."
+   "R",
+   "Moscone Center'ın etkinlik sayfasıyla doğrulandı; yüz yüze fiyat hâlâ açıklanmadı."
   ],
   [
    "Slush 2026",
@@ -3310,6 +4001,110 @@ window.VERI_GL = {
    "Bilgi yok",
    "U",
    "infosec-conferences.com listesi."
+  ],
+  [
+   "Microsoft AI Tour 2026–27 — Avrupa ve Körfez durakları",
+   "Paris 20 Ekim · Londra 21 Ekim · Köln 22 Ekim · Dubai 3 Kasım · Utrecht 10 Aralık 2026 · Madrid 14 Ocak 2027",
+   "Çok şehirli",
+   "Köln: Koelncongress; diğerleri açıklanmadı",
+   "Copilot, ajan tabanlı yapay zekâ, Azure, güvenlik; tek günlük keynote + oturumlar + fuar",
+   "Üst düzey iş liderleri, BT ve teknik ekipler, partnerler",
+   "Microsoft; 35 şehirlik tur Haziran 2027'ye kadar sürüyor. Riyad 7 Nisan 2027.",
+   "https://aitour.microsoft.com/",
+   "Ücretsiz (kayıt)",
+   "U",
+   "Köln tarihi partner sayfasıyla doğrulandı; Paris, Londra, Dubai ve Utrecht yalnızca şehir dizini özetinden, resmî şehir sayfası JS ile yüklendiği için okunamadı."
+  ],
+  [
+   "CES 2027",
+   "6–9 Ocak 2027",
+   "Las Vegas / ABD",
+   "Las Vegas Convention Center + Venetian Expo",
+   "Tüketici teknolojisi: yapay zekâ, akıllı ev, mobilite, sağlık teknolojisi, perakende teknolojisi",
+   "Üreticiler, perakendeciler, yatırımcılar, basın",
+   "Organizatör CTA",
+   "https://www.ces.tech/",
+   "Kayıt açık; fiyat sayfada yok",
+   "R",
+   ""
+  ],
+  [
+   "Cybertech Global Tel Aviv 2027 (14.)",
+   "25–27 Ocak 2027",
+   "Tel Aviv / İsrail",
+   "EXPO Tel Aviv",
+   "Siber güvenlik; yapay zekâ güvenliği, kritik altyapı",
+   "CISO'lar, kamu, girişimler",
+   "Cybertech (Israel Defense)",
+   "https://www.cybertechisrael.com/",
+   "Bilinmiyor",
+   "R",
+   ""
+  ],
+  [
+   "Web Summit Qatar 2027 (4.)",
+   "31 Ocak – 3 Şubat 2027",
+   "Doha / Katar",
+   "Doha Exhibition & Convention Center",
+   "Girişim ekosistemi, yapay zekâ, yatırım",
+   "Kurucular, yatırımcılar, kurumsal teknoloji liderleri",
+   "Web Summit ve Katar Hükümeti",
+   "https://qatar.websummit.com/",
+   "Bilet sitede; fiyat alınamadı",
+   "R",
+   ""
+  ],
+  [
+   "Black Hat Asia 2027",
+   "28 Şubat – 3 Mart 2027",
+   "Singapur",
+   "Marina Bay Sands",
+   "Siber güvenlik araştırmaları, eğitimler, yapay zekâ güvenliği",
+   "Güvenlik mühendisleri, CISO'lar",
+   "Informa",
+   "https://www.blackhat.com/asia/",
+   "Bilinmiyor",
+   "U",
+   "Resmî site 403."
+  ],
+  [
+   "MWC Barcelona 2027 + 4YFN",
+   "1–4 Mart 2027",
+   "Barselona / İspanya",
+   "Fira Gran Via",
+   "AI in Action, Autonomous Enterprise, Networks Reinvented, Trust at Scale; 4YFN girişim ve yatırım (Hall 8)",
+   "Telekom, teknoloji ve kurumsal yöneticiler; kurucular ve yatırımcılar",
+   "GSMA",
+   "https://www.mwcbarcelona.com/",
+   "Fiyat sayfada yok",
+   "R",
+   ""
+  ],
+  [
+   "Tech Show London 2027 (Big Data & AI World, Cloud & Cyber Security Expo, DevOps Live)",
+   "10–11 Mart 2027",
+   "Londra / İngiltere",
+   "ExCeL London",
+   "Bulut, veri, yapay zekâ, siber güvenlik, DevOps",
+   "BT ve dijital dönüşüm yöneticileri; ~19.000 katılımcı",
+   "CloserStill Media",
+   "https://www.techshowlondon.co.uk/",
+   "Ücretsiz kayıt (listelere göre)",
+   "R",
+   ""
+  ],
+  [
+   "KubeCon + CloudNativeCon Europe 2027",
+   "15–18 Mart 2027",
+   "Barselona / İspanya",
+   "Kesinleşmedi",
+   "Bulut-yerel altyapı, Kubernetes, yapay zekâ altyapısı",
+   "Platform ve DevOps mühendisleri",
+   "CNCF / Linux Foundation",
+   "https://events.linuxfoundation.org/kubecon-cloudnativecon-europe/",
+   "Henüz yok",
+   "R",
+   ""
   ]
  ],
  "Diğer ilgili etkinlikler": [
@@ -3351,18 +4146,63 @@ window.VERI_GL = {
    "Bilgi yok",
    "R",
    ""
+  ],
+  [
+   "World Economic Forum Annual Meeting 2027 (bağlam)",
+   "18–22 Ocak 2027",
+   "Davos / İsviçre",
+   "Davos Congress Centre",
+   "Küresel gündem; yapay zekâ yönetişimi ve ekonomisi",
+   "Davetli liderler",
+   "WEF",
+   "https://www.weforum.org/",
+   "Yalnızca davetle",
+   "U",
+   "Takip için; katılım davetli."
+  ],
+  [
+   "World Governments Summit 2027",
+   "1–3 Şubat 2027",
+   "Dubai / BAE",
+   "Madinat Jumeirah (2027 için doğrulanmadı)",
+   "Kamu politikası; yapay zekâ, dijital hükümet",
+   "Devlet ve kamu liderleri, CEO'lar",
+   "WGS Organization",
+   "https://www.worldgovernmentssummit.org/",
+   "Davetle",
+   "R",
+   "Mekân doğrulanmadı."
+  ],
+  [
+   "Saudi Franchise Expo",
+   "26–28 Ocak 2027",
+   "Riyad / Suudi Arabistan",
+   "The Arena",
+   "Franchise ve çok şubeli perakende",
+   "Franchise veren ve alan şirketler",
+   "Bilgi yok",
+   "https://salla.com/",
+   "Bilgi yok",
+   "D",
+   "Yalnızca Salla takvimi."
+  ],
+  [
+   "RLC Global Forum 2027",
+   "31 Ocak – 1 Şubat 2027",
+   "Riyad / Suudi Arabistan",
+   "Bilgi yok",
+   "Küresel perakende CEO forumu",
+   "Perakende CEO'ları",
+   "Royal Commission for Riyadh City ana partner",
+   "https://www.rlcglobalforum.com/",
+   "Bilgi yok",
+   "D",
+   "Bir kaynak 1–2 Şubat diyor."
   ]
  ]
 };
 
 window.TAKIP_GL = [
- [
-  "Microsoft AI Tour 2026–27",
-  "2025–26 turu",
-  "Ekim 2026 – Haziran 2027 (35 şehir)",
-  "London27 ve Paris27 şehir sayfaları açıldı (aitour.microsoft.com/flow/microsoft/london27, paris27) ama tarihler JS-render nedeniyle okunamadı; ücretsiz tek günlük format.",
-  "https://aitour.microsoft.com"
- ],
  [
   "eCommerce Expo Asia / DMEXCO Asia (Singapur)",
   "Eylül 2025",
@@ -3472,7 +4312,7 @@ window.TAKIP_GL = [
   "2027 ileri takvim",
   "—",
   "—",
-  "NRF Big Show 10–12 Ocak 2027 (NYC, kayıt açık) · Shoptalk Spring 22–24 Mart 2027 (Las Vegas) · Retail Week Live 18 Mart 2027 · RMX MENA 24 Mart 2027 (Dubai) · NVIDIA GTC 15–18 Mart 2027 · Loyalty360 Expo 18–20 Mayıs 2027 · Data Innovation Summit Nordic 18–20 Mayıs 2027 · International Loyalty Awards 2027 başvuru son günü 10 Aralık 2026.",
+  "NRF Big Show 10–12 Ocak 2027 (NYC, kayıt açık) · Shoptalk Spring 22–24 Mart 2027 (Las Vegas) · Retail Week Live 18 Mart 2027 · NVIDIA GTC 15–18 Mart 2027 · Loyalty360 Expo 18–20 Mayıs 2027 · Data Innovation Summit Nordic 18–20 Mayıs 2027 · International Loyalty Awards 2027 başvuru son günü 10 Aralık 2026.",
   "https://nrfbigshow.nrf.com/"
  ],
  [
@@ -3509,6 +4349,48 @@ window.TAKIP_GL = [
   "—",
   "DELIVER Middle East 20–21 Ocak 2027 (Dubai) · Manifest 8–10 Şubat 2027 (Las Vegas) · LogiMAT 16–18 Mart 2027 (Stuttgart, 25. yıl) · ProMat 19–21 Nisan 2027 (Chicago) · Blue Yonder ICON 17–20 Mayıs 2027 · Empack Mechelen 27–28 Ekim 2027.",
   "https://www.logimat-messe.de/"
+ ],
+ [
+  "Shopify Editions Winter '27",
+  "Winter '26: 17 Aralık 2025",
+  "Aralık 2026 ortası",
+  "Duyuru yok; ürün sürüm duyurusu, konferans değil.",
+  "https://www.shopify.com/editions"
+ ],
+ [
+  "2027 Q1 · LEAP 2027 (Riyad)",
+  "2026 edisyonu Nisan'dan 31 Ağustos – 3 Eylül 2026'ya ertelendi",
+  "Şubat mı Nisan 2027 mi belirsiz",
+  "Kaynaklar çelişkili; resmî site 403.",
+  "https://onegiantleap.com/"
+ ],
+ [
+  "2027 Q1 · Microsoft AI Tour Q1 şehirleri",
+  "Londra 24 Şubat 2026 (ExCeL)",
+  "Ocak–Mart 2027",
+  "Madrid 14 Ocak 2027 dışında Q1 şehir tarihleri yayımlanmadı.",
+  "https://aitour.microsoft.com/"
+ ],
+ [
+  "2027 ileri takvim (global, Nisan–Haziran)",
+  "—",
+  "—",
+  "RSAC 5–8 Nisan · Google Cloud Next 13–15 Nisan · GITEX Africa 26–28 Nisan · GITEX AI Asia 29–30 Nisan · SaaStr AI 11–12 Mayıs · Web Summit Vancouver 25–28 Mayıs · Snowflake Summit 7–10 Haziran · AI Summit London 9–10 Haziran · Geneva AI Summit 21–22 Haziran 2027.",
+  "https://www.rsaconference.com/"
+ ],
+ [
+  "2027 Q1 · Seamless Asia · Savant Berlin · Amazon unBoxed London · FinovateEurope · Paris Fintech Forum · RLA Conference",
+  "Ocak–Şubat (geleneksel)",
+  "Ocak–Mart 2027",
+  "2027 tarihleri açıklanmadı; Seamless Asia düzenlenmeyebilir.",
+  "https://www.terrapinn.com/"
+ ],
+ [
+  "2027 Q2 ileri takvim (perakende/e-ticaret)",
+  "—",
+  "—",
+  "eCommerce Expo Asia 7–8 Nisan · eTail Germany 14–15 Nisan · PAY360 21–22 Nisan · Retail Technology Show 21–22 Nisan · Money20/20 Asia 27–29 Nisan · B2B eCommerce World London 11–12 Mayıs · Shoptalk Europe 1–3 Haziran · eTail UK 15–16 Haziran 2027. RMX MENA 2027 doğrulanamadı, listeden çıkarıldı.",
+  "https://www.shoptalk.com/"
  ]
 ];
 
@@ -4199,13 +5081,15 @@ window.GECMIS_GL = [
   /* Bitiş tarihi bugünden önce olan etkinlikleri ana listelerden çıkar.
      Tarih metnindeki en geç gün esas alınır ("29 Eylül – 1 Ekim", çok şehirli turlar dahil);
      tarihi okunamayan veya yalnızca ay bilgisi olan kayıtlar ay sonuna kadar görünür. */
-  var AY={"Eylül":9,"Ekim":10,"Kasım":11,"Aralık":12,"Eyl":9,"Eki":10,"Kas":11,"Ara":12};
+  /* Ay anahtarı: Eylül 2026=9 … Aralık 2026=12, Ocak 2027=13, Şubat=14, Mart=15, Nisan=16.
+     new Date(2026, anahtar-1, gün) 2027 aylarını kendiliğinden doğru yıla taşır. */
+  var AY={"Eylül":9,"Ekim":10,"Kasım":11,"Aralık":12,"Ocak":13,"Şubat":14,"Mart":15,"Nisan":16};
   function bitis(s){
-    s=String(s||""); var best=null, m, re=/(\d{1,2})(?:\s*[–-]\s*(\d{1,2}))?\s*(Eylül|Ekim|Kasım|Aralık)/g;
+    s=String(s||""); var best=null, m, re=/(\d{1,2})(?:\s*[–-]\s*(\d{1,2}))?\s*(Eylül|Ekim|Kasım|Aralık|Ocak|Şubat|Mart|Nisan)/g;
     while((m=re.exec(s))){ var v=AY[m[3]]*100+ +(m[2]||m[1]); if(best===null||v>best) best=v; }
-    var re2=/(\d{1,2})\s*(Eylül|Ekim|Kasım|Aralık)\s*[–-]\s*(\d{1,2})\s*(Eylül|Ekim|Kasım|Aralık)/g;
+    var re2=/(\d{1,2})\s*(Eylül|Ekim|Kasım|Aralık|Ocak|Şubat|Mart|Nisan)\s*[–-]\s*(\d{1,2})\s*(Eylül|Ekim|Kasım|Aralık|Ocak|Şubat|Mart|Nisan)/g;
     while((m=re2.exec(s))){ var v2=AY[m[4]]*100+ +m[3]; if(v2>best) best=v2; }
-    if(best===null){ var a=/(Eylül|Ekim|Kasım|Aralık)/.exec(s); if(a) best=AY[a[1]]*100+31; }
+    if(best===null){ var a=/(Eylül|Ekim|Kasım|Aralık|Ocak|Şubat|Mart|Nisan)/.exec(s); if(a) best=AY[a[1]]*100+31; }
     return best===null?null:new Date(2026, Math.floor(best/100)-1, best%100, 23, 59, 59);
   }
   var SIMDI=new Date();
@@ -4224,7 +5108,7 @@ window.GECMIS_GL = [
       html+='<h3>'+esc(k)+' <span class="small">('+rows.length+')</span></h3><div class="tblwrap"><table data-group="'+esc(k)+'">'+HEAD+'<tbody>';
       rows.forEach(function(r){
         n++;
-        html+='<tr data-g="'+r[9]+'"><td class="name">'+esc(r[0])+'</td><td class="date">'+esc(r[1])+'</td><td>'+esc(r[2])+'</td><td>'+esc(r[3])+'</td><td>'+esc(r[4])+'</td><td>'+esc(r[5])+'</td><td>'+esc(r[6])+'</td><td class="url">'+linkCell(r[7])+'</td><td>'+esc(r[8])+'</td><td class="date">15 Eyl 2026</td><td><span class="badge b-'+r[9]+'">'+G[r[9]]+'</span></td><td class="note">'+esc(r[10]||"")+'</td></tr>';
+        html+='<tr data-g="'+r[9]+'"><td class="name">'+esc(r[0])+'</td><td class="date">'+esc(r[1])+'</td><td>'+esc(r[2])+'</td><td>'+esc(r[3])+'</td><td>'+esc(r[4])+'</td><td>'+esc(r[5])+'</td><td>'+esc(r[6])+'</td><td class="url">'+linkCell(r[7])+'</td><td>'+esc(r[8])+'</td><td class="date">12 Eki 2026</td><td><span class="badge b-'+r[9]+'">'+G[r[9]]+'</span></td><td class="note">'+esc(r[10]||"")+'</td></tr>';
       });
       html+='</tbody></table></div>';
     });
@@ -4281,13 +5165,14 @@ window.GECMIS_GL = [
   showView(lsGet("radar.view")==="detay"?"detay":"aylik");
 
   /* ---------- Aylık liste ---------- */
-  var AYLAR=[["Eylül","Eyl",9],["Ekim","Eki",10],["Kasım","Kas",11],["Aralık","Ara",12]];
-  var MON={"Eylül":9,"Eyl":9,"Ekim":10,"Eki":10,"Kasım":11,"Kas":11,"Aralık":12,"Ara":12};
-  var ABBR={9:"Eyl",10:"Eki",11:"Kas",12:"Ara"};
+  var AYLAR=[["Eylül 2026","Eyl",9],["Ekim 2026","Eki",10],["Kasım 2026","Kas",11],["Aralık 2026","Ara",12],["Ocak 2027","Oca",13],["Şubat 2027","Şub",14],["Mart 2027","Mar",15],["Nisan 2027","Nis",16]];
+  var DONEMLER={Q4:[10,11,12],Q1:[13,14,15],ALL:[9,10,11,12,13,14,15,16]};
+  var MON=AY;
+  var ABBR={9:"Eyl",10:"Eki",11:"Kas",12:"Ara",13:"Oca",14:"Şub",15:"Mar",16:"Nis"};
   /* Tarih metnindeki tüm gün/ay geçişlerini bulur; çok duraklı etkinliklerde
      bitmemiş ilk durağı seçer, böylece etkinlik sıradaki durağın ayında listelenir. */
   function parseDate(s){
-    var re=/(\d{1,2})(?:\s*[–-]\s*(\d{1,2}))?\s*(Eylül|Ekim|Kasım|Aralık|Eyl|Eki|Kas|Ara)\b/g, m, list=[];
+    var re=/(\d{1,2})(?:\s*[–-]\s*(\d{1,2}))?\s*(Eylül|Ekim|Kasım|Aralık|Ocak|Şubat|Mart|Nisan)/g, m, list=[];
     while((m=re.exec(s))){
       var mo=MON[m[3]], end=+(m[2]||m[1]);
       list.push({mo:mo, day:+m[1], gun:m[1]+(m[2]?"–"+m[2]:""), ay:ABBR[mo], son:new Date(2026,mo-1,end,23,59,59)});
@@ -4296,7 +5181,7 @@ window.GECMIS_GL = [
       for(var i=0;i<list.length;i++){ if(list[i].son>=SIMDI) return list[i]; }
       return list[0];
     }
-    var m2=/(Eylül|Ekim|Kasım|Aralık)/.exec(s);
+    var m2=/(Eylül|Ekim|Kasım|Aralık|Ocak|Şubat|Mart|Nisan)/.exec(s);
     if(m2){var mo2=MON[m2[1]];return {mo:mo2,day:99,gun:"?",ay:ABBR[mo2]};}
     return {mo:12,day:99,gun:"—",ay:""};
   }
@@ -4310,11 +5195,25 @@ window.GECMIS_GL = [
   var hidden={}; try{ (JSON.parse(lsGet("radar.gizli")||"[]")).forEach(function(id){hidden[id]=true;}); }catch(e){}
   function saveHidden(){ lsSet("radar.gizli",JSON.stringify(Object.keys(hidden))); }
 
+  /* Dönem: varsayılan, bugünün düştüğü çeyrek (1 Ocak 2027'den itibaren Ocak–Mart). Seçim tarayıcıda hatırlanır. */
+  var dbtns=[].slice.call(document.querySelectorAll(".dbtn"));
+  var donem=lsGet("radar.donem"); if(!DONEMLER[donem]) donem=(SIMDI>=new Date(2027,0,1))?"Q1":"Q4";
+  function donemSay(){
+    Object.keys(DONEMLER).forEach(function(p){
+      var n=items.filter(function(it){return DONEMLER[p].indexOf(it.mo)>-1;}).length;
+      var el=document.querySelector('[data-dc="'+p+'"]'); if(el) el.textContent="("+n+")";
+    });
+    dbtns.forEach(function(b){ b.setAttribute("aria-pressed", b.dataset.p===donem?"true":"false"); });
+  }
+  dbtns.forEach(function(b){ b.addEventListener("click",function(){ donem=b.dataset.p; lsSet("radar.donem",donem); donemSay(); build(); apply(); }); });
+
   var cont=document.getElementById("aylar");
   function shortCity(c){return String(c).replace(/\s*\/\s*Türkiye$/,"").replace(/\s*\/\s*ABD$/," · ABD");}
   function build(){
     var html="";
+    var izinli=DONEMLER[donem]||DONEMLER.ALL;
     AYLAR.forEach(function(ay){
+      if(izinli.indexOf(ay[2])<0) return;
       var rows=items.filter(function(it){return it.mo===ay[2];});
       if(!rows.length) return;
       html+='<section class="ay" data-mo="'+ay[2]+'"><h3>'+ay[0]+' <small data-cnt></small></h3>';
@@ -4332,7 +5231,7 @@ window.GECMIS_GL = [
           +'<dt>Katılımcı</dt><dd>'+esc(r[5])+'</dd>'
           +'<dt>Kapsam</dt><dd>'+esc(r[6])+'</dd>'
           +'<dt>Bilet</dt><dd>'+esc(r[8])+'</dd>'
-          +'<dt>Kaynak</dt><dd>'+linkCell(r[7])+' · <span class="badge b-'+r[9]+'">'+G[r[9]]+'</span> · 27 Eyl 2026</dd>'
+          +'<dt>Kaynak</dt><dd>'+linkCell(r[7])+' · <span class="badge b-'+r[9]+'">'+G[r[9]]+'</span> · 12 Eki 2026</dd>'
           +(r[10]?'<dt>Not</dt><dd>'+esc(r[10])+'</dd>':'')
           +'<dt>Grup</dt><dd>'+esc(it.topic)+'</dd>'
           +'</dl></div></div>';
@@ -4341,7 +5240,7 @@ window.GECMIS_GL = [
     });
     cont.innerHTML=html;
   }
-  build();
+  donemSay(); build();
 
   cont.addEventListener("click",function(e){
     var x=e.target.closest(".x");
