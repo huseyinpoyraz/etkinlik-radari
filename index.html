@@ -107,8 +107,10 @@ footer{margin-top:64px;padding-top:20px;border-top:1px solid var(--line);font-si
 .ev:first-of-type{border-top:0}
 .ev-h{display:grid;grid-template-columns:1fr 34px;align-items:center;padding-right:6px}
 .ev-h:hover{background:var(--sunken)}
-.ev-t{display:grid;grid-template-columns:84px minmax(0,1fr) auto;gap:8px;align-items:center;padding:8px 6px 8px 14px;cursor:pointer;background:none;border:0;width:100%;text-align:left;font:inherit;color:var(--ink);min-width:0}
-.ev-h .d{font-family:"IBM Plex Mono",monospace;font-size:12px;color:var(--muted);white-space:nowrap;font-variant-numeric:tabular-nums;overflow:hidden;text-overflow:ellipsis;min-width:0}
+.ev-t{display:grid;grid-template-columns:62px minmax(0,1fr) auto;gap:8px;align-items:center;padding:8px 6px 8px 14px;cursor:pointer;background:none;border:0;width:100%;text-align:left;font:inherit;color:var(--ink);min-width:0}
+.ev-h .d{font-family:"IBM Plex Mono",monospace;color:var(--muted);white-space:nowrap;font-variant-numeric:tabular-nums;min-width:0;display:flex;flex-direction:column;line-height:1.2}
+.ev-h .d b{font-weight:500;font-size:13.5px;color:var(--ink)}
+.ev-h .d small{font-size:11px;letter-spacing:.06em;text-transform:uppercase}
 .ev-h .n{font-weight:600;font-size:14.5px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;min-width:0}
 .ev-h .n small{display:block;font-weight:400;font-size:12.5px;color:var(--muted);overflow:hidden;text-overflow:ellipsis}
 .ev-h .m{display:flex;gap:6px;align-items:center}
@@ -117,7 +119,7 @@ footer{margin-top:64px;padding-top:20px;border-top:1px solid var(--line);font-si
 .tg{font-family:"IBM Plex Mono",monospace;font-size:10.5px;letter-spacing:.06em;padding:1px 6px;border-radius:3px;background:var(--sunken);color:var(--muted);border:1px solid var(--line)}
 .ev .x{font:inherit;font-size:16px;line-height:1;border:0;background:none;color:var(--muted);cursor:pointer;padding:4px 6px;border-radius:4px;opacity:.55}
 .ev .x:hover{opacity:1;background:var(--warn-soft);color:var(--warn)}
-.ev-d{padding:4px 14px 14px 106px;font-size:13.5px;display:grid;gap:4px;border-top:1px dashed var(--line)}
+.ev-d{padding:4px 14px 14px 84px;font-size:13.5px;display:grid;gap:4px;border-top:1px dashed var(--line)}
 .ev-d dl{margin:0;display:grid;grid-template-columns:110px 1fr;gap:3px 12px}
 .ev-d dt{color:var(--muted);font-family:"IBM Plex Mono",monospace;font-size:11.5px;text-transform:uppercase;letter-spacing:.05em;padding-top:2px}
 .ev-d dd{margin:0}
@@ -125,7 +127,7 @@ footer{margin-top:64px;padding-top:20px;border-top:1px solid var(--line);font-si
 .ev.hid{display:none}
 #gizli-panel ul{margin:6px 0 0;padding-left:0;list-style:none;display:flex;flex-wrap:wrap;gap:6px}
 #gizli-panel li{font-size:13px;background:var(--sunken);border:1px solid var(--line);border-radius:999px;padding:3px 10px}
-@media (max-width:640px){.ev-t{grid-template-columns:74px minmax(0,1fr)}.ev-h .m{display:none}.ev-d{padding-left:14px}.ev-d dl{grid-template-columns:1fr}}
+@media (max-width:640px){.ev-t{grid-template-columns:56px minmax(0,1fr)}.ev-h .m{display:none}.ev-d{padding-left:14px}.ev-d dl{grid-template-columns:1fr}}
 @media (prefers-reduced-motion: reduce){*{scroll-behavior:auto!important}}
 html{scroll-behavior:smooth;scroll-padding-top:56px}
 </style>
@@ -4204,16 +4206,25 @@ window.GECMIS_GL = [
   var AYLAR=[["Eylül","Eyl",9],["Ekim","Eki",10],["Kasım","Kas",11],["Aralık","Ara",12]];
   var MON={"Eylül":9,"Eyl":9,"Ekim":10,"Eki":10,"Kasım":11,"Kas":11,"Aralık":12,"Ara":12};
   var ABBR={9:"Eyl",10:"Eki",11:"Kas",12:"Ara"};
+  /* Tarih metnindeki tüm gün/ay geçişlerini bulur; çok duraklı etkinliklerde
+     bitmemiş ilk durağı seçer, böylece etkinlik sıradaki durağın ayında listelenir. */
   function parseDate(s){
-    var m=/(\d{1,2})(?:\s*[–-]\s*(\d{1,2}))?\s*(Eylül|Ekim|Kasım|Aralık|Eyl|Eki|Kas|Ara)\b/.exec(s);
-    if(m){var mo=MON[m[3]];return {mo:mo,day:+m[1],label:m[1]+(m[2]?"–"+m[2]:"")+" "+ABBR[mo]};}
+    var re=/(\d{1,2})(?:\s*[–-]\s*(\d{1,2}))?\s*(Eylül|Ekim|Kasım|Aralık|Eyl|Eki|Kas|Ara)\b/g, m, list=[];
+    while((m=re.exec(s))){
+      var mo=MON[m[3]], end=+(m[2]||m[1]);
+      list.push({mo:mo, day:+m[1], gun:m[1]+(m[2]?"–"+m[2]:""), ay:ABBR[mo], son:new Date(2026,mo-1,end,23,59,59)});
+    }
+    if(list.length){
+      for(var i=0;i<list.length;i++){ if(list[i].son>=SIMDI) return list[i]; }
+      return list[0];
+    }
     var m2=/(Eylül|Ekim|Kasım|Aralık)/.exec(s);
-    if(m2){var mo2=MON[m2[1]];return {mo:mo2,day:99,label:ABBR[mo2]+" ?"};}
-    return {mo:12,day:99,label:"—"};
+    if(m2){var mo2=MON[m2[1]];return {mo:mo2,day:99,gun:"?",ay:ABBR[mo2]};}
+    return {mo:12,day:99,gun:"—",ay:""};
   }
   function idOf(name){var h=0;for(var i=0;i<name.length;i++){h=(h*31+name.charCodeAt(i))|0;}return "e"+(h>>>0).toString(36);}
   var items=[];
-  function collect(data,src){Object.keys(data).forEach(function(k){data[k].forEach(function(r){var d=parseDate(r[1]);items.push({id:idOf(r[0]),src:src,topic:k,r:r,mo:d.mo,day:d.day,label:d.label});});});}
+  function collect(data,src){Object.keys(data).forEach(function(k){data[k].forEach(function(r){var d=parseDate(r[1]);items.push({id:idOf(r[0]),src:src,topic:k,r:r,mo:d.mo,day:d.day,gun:d.gun,ay:d.ay});});});}
   collect(window.VERI_TR||{},"TR"); collect(window.VERI_GL||{},"GL");
   items.sort(function(a,b){return a.mo-b.mo||a.day-b.day||a.r[0].localeCompare(b.r[0],"tr");});
   var byId={}; items.forEach(function(it){byId[it.id]=it;});
@@ -4232,7 +4243,7 @@ window.GECMIS_GL = [
       rows.forEach(function(it){
         var r=it.r;
         html+='<div class="ev'+(hidden[it.id]?" hid":"")+'" data-id="'+it.id+'" data-src="'+it.src+'" data-g="'+r[9]+'" aria-expanded="false">'
-          +'<div class="ev-h"><button class="ev-t" type="button" aria-controls="d-'+it.id+'"><span class="d">'+esc(it.label)+'</span>'
+          +'<div class="ev-h"><button class="ev-t" type="button" aria-controls="d-'+it.id+'"><span class="d"><b>'+esc(it.gun)+'</b><small>'+esc(it.ay)+'</small></span>'
           +'<span class="n">'+esc(r[0])+'<small>'+esc(shortCity(r[2]))+(r[3]&&r[3]!=="Bilgi yok"&&r[3]!=="—"?" · "+esc(r[3]):"")+'</small></span>'
           +'<span class="m"><span class="tg">'+it.src+'</span><span class="dot '+r[9]+'" title="'+G[r[9]]+'"></span></span>'
           +'</button><button class="x" type="button" title="Kalıcı gizle" aria-label="Gizle: '+esc(r[0])+'">×</button></div>'
